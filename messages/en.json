@@ -1,0 +1,13 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "language": {
+    "label": "Language",
+    "en": "English",
+    "fa": "Persian",
+    "ar": "Arabic"
+  }
+}
