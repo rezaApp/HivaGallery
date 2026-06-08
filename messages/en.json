@@ -9,5 +9,48 @@
     "en": "English",
     "fa": "Persian",
     "ar": "Arabic"
+  },
+  "about": {
+    "title": "About Hiva",
+    "subtitle": "Building the future of digital experiences",
+    "missionTitle": "Our Mission",
+    "missionText": "We are dedicated to creating innovative solutions that connect people and simplify complex challenges.",
+    "visionTitle": "Our Vision",
+    "visionText": "A world where technology empowers everyone to achieve more.",
+    "valuesTitle": "Our Values",
+    "value1Title": "Innovation",
+    "value1Text": "We push boundaries and embrace new ideas.",
+    "value2Title": "Integrity",
+    "value2Text": "We act with honesty and transparency in everything we do.",
+    "value3Title": "Impact",
+    "value3Text": "We measure success by the difference we make."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Have a question? We'd love to hear from you.",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "your@email.com",
+    "message": "Message",
+    "messagePlaceholder": "How can we help you?",
+    "send": "Send Message",
+    "success": "Your message has been sent. We'll get back to you soon!"
+  },
+  "auth": {
+    "title": "Welcome back",
+    "subtitle": "Sign in or create an account to continue",
+    "mobile": "Mobile",
+    "email": "Email",
+    "mobilePlaceholder": "Enter your mobile number",
+    "emailPlaceholder": "Enter your email address",
+    "continue": "Continue",
+    "otp": {
+      "title": "Enter the code",
+      "subtitle": "We sent a 6-digit code to {credential}",
+      "resend": "Resend code",
+      "resendIn": "Resend in {seconds}",
+      "change": "Change number / email"
+    }
   }
 }
