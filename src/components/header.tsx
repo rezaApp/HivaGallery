@@ -70,6 +70,12 @@ export function Header() {
 
         {/* Actions */}
         <div className="flex items-center gap-2">
+          <Link href="/login" className="hidden md:inline-flex">
+            <Button variant="outline" size="sm">
+              {t("signIn")}
+            </Button>
+          </Link>
+
           <ThemeToggle />
 
           {/* Language switcher */}
@@ -126,6 +132,13 @@ export function Header() {
                 {label}
               </Link>
             ))}
+            <Link
+              href="/login"
+              className="text-muted-foreground hover:bg-accent hover:text-foreground rounded-md px-3 py-2 text-sm font-medium transition-colors"
+              onClick={() => setMobileOpen(false)}
+            >
+              {t("signIn")}
+            </Link>
           </nav>
         </div>
       )}

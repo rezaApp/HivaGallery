@@ -32,7 +32,9 @@ export function SignInForm({ onSubmit }: Props) {
   return (
     <div className="w-full max-w-sm space-y-6">
       <div className="space-y-2 text-center">
-        <h1 className="text-2xl font-bold tracking-tight">{t("title")}</h1>
+        <h1 className="text-foreground text-2xl font-bold tracking-tight">
+          {t("title")}
+        </h1>
         <p className="text-muted-foreground text-sm">{t("subtitle")}</p>
       </div>
 

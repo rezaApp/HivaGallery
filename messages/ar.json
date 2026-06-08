@@ -2,7 +2,8 @@
   "nav": {
     "home": "الرئيسية",
     "about": "من نحن",
-    "contact": "اتصل بنا"
+    "contact": "اتصل بنا",
+    "signIn": "تسجيل الدخول"
   },
   "language": {
     "label": "اللغة",

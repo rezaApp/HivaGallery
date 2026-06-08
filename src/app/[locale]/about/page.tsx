@@ -11,7 +11,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <main className="mx-auto max-w-4xl space-y-20 px-6 py-16">
+    <main className="mx-auto w-full max-w-4xl space-y-20 px-6 py-16">
       <section className="space-y-4 text-center">
         <h1 className="text-foreground text-4xl font-bold tracking-tight sm:text-5xl">
           {t("title")}
@@ -26,27 +26,33 @@ export default function AboutPage() {
           <div className="bg-primary/10 flex size-10 items-center justify-center rounded-lg">
             <Target className="text-primary size-5" />
           </div>
-          <h2 className="text-xl font-semibold">{t("missionTitle")}</h2>
+          <h2 className="text-card-foreground text-xl font-semibold">
+            {t("missionTitle")}
+          </h2>
           <p className="text-muted-foreground">{t("missionText")}</p>
         </div>
         <div className="bg-card space-y-3 rounded-xl border p-8">
           <div className="bg-primary/10 flex size-10 items-center justify-center rounded-lg">
             <Eye className="text-primary size-5" />
           </div>
-          <h2 className="text-xl font-semibold">{t("visionTitle")}</h2>
+          <h2 className="text-card-foreground text-xl font-semibold">
+            {t("visionTitle")}
+          </h2>
           <p className="text-muted-foreground">{t("visionText")}</p>
         </div>
       </section>
 
       <section className="space-y-8">
-        <h2 className="text-center text-2xl font-bold">{t("valuesTitle")}</h2>
+        <h2 className="text-foreground text-center text-2xl font-bold">
+          {t("valuesTitle")}
+        </h2>
         <div className="grid gap-6 sm:grid-cols-3">
           {values.map(({ Icon, title, text }) => (
             <div key={title} className="space-y-3 p-6 text-center">
               <div className="bg-muted mx-auto flex size-12 items-center justify-center rounded-full">
                 <Icon className="size-5" />
               </div>
-              <h3 className="font-semibold">{title}</h3>
+              <h3 className="text-foreground font-semibold">{title}</h3>
               <p className="text-muted-foreground text-sm">{text}</p>
             </div>
           ))}

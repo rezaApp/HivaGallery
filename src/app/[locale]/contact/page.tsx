@@ -24,17 +24,21 @@ export default function ContactPage() {
 
   if (submitted) {
     return (
-      <main className="flex flex-1 flex-col items-center justify-center gap-4 px-6 py-24 text-center">
-        <CheckCircle className="size-12 text-green-500" />
+      <main className="flex w-full flex-1 flex-col items-center justify-center gap-4 px-6 py-24 text-center">
+        <div className="bg-primary/10 flex size-16 items-center justify-center rounded-full">
+          <CheckCircle className="text-primary size-8" />
+        </div>
         <p className="text-foreground font-medium">{t("success")}</p>
       </main>
     );
   }
 
   return (
-    <main className="mx-auto max-w-lg space-y-8 px-6 py-16">
+    <main className="mx-auto w-full max-w-lg space-y-8 px-6 py-16">
       <div className="space-y-2 text-center">
-        <h1 className="text-3xl font-bold tracking-tight">{t("title")}</h1>
+        <h1 className="text-foreground text-3xl font-bold tracking-tight">
+          {t("title")}
+        </h1>
         <p className="text-muted-foreground">{t("subtitle")}</p>
       </div>
 
