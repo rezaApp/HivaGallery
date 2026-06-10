@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
 import { Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -45,18 +46,27 @@ export function SignInForm({ onSubmit }: Props) {
             type="button"
             onClick={() => switchMethod(m)}
             className={cn(
-              "flex flex-1 items-center justify-center gap-2 rounded-md py-1.5 text-sm font-medium transition-all",
+              "relative flex flex-1 items-center justify-center gap-2 rounded-md py-1.5 text-sm font-medium transition-colors",
               method === m
-                ? "bg-background text-foreground shadow-sm"
+                ? "text-foreground"
                 : "text-muted-foreground hover:text-foreground"
             )}
           >
-            {m === "mobile" ? (
-              <Phone className="size-4" />
-            ) : (
-              <Mail className="size-4" />
+            {method === m && (
+              <motion.span
+                layoutId="auth-method-bg"
+                className="bg-background absolute inset-0 rounded-md shadow-sm"
+                transition={{ duration: 0.2, ease: "easeInOut" }}
+              />
             )}
-            {t(m)}
+            <span className="relative z-10 flex items-center gap-2">
+              {m === "mobile" ? (
+                <Phone className="size-4" />
+              ) : (
+                <Mail className="size-4" />
+              )}
+              {t(m)}
+            </span>
           </button>
         ))}
       </div>

@@ -3,7 +3,9 @@
     "home": "Home",
     "about": "About",
     "contact": "Contact",
-    "signIn": "Sign In"
+    "signIn": "Sign In",
+    "basket": "Basket",
+    "toggleMenu": "Show or hide menu"
   },
   "language": {
     "label": "Language",
@@ -37,6 +39,21 @@
     "messagePlaceholder": "How can we help you?",
     "send": "Send Message",
     "success": "Your message has been sent. We'll get back to you soon!"
+  },
+  "basket": {
+    "title": "Your Basket",
+    "subtitle": "Review your items before checkout",
+    "product1Name": "Wireless Headphones",
+    "product1Desc": "Noise-cancelling over-ear headphones with 30-hour battery life.",
+    "product2Name": "Smart Watch",
+    "product2Desc": "Fitness tracker with heart-rate monitor and GPS.",
+    "quantity": "Qty",
+    "increase": "Increase quantity",
+    "decrease": "Decrease quantity",
+    "remove": "Remove item",
+    "empty": "Your basket is empty.",
+    "total": "Total",
+    "checkout": "Checkout"
   },
   "auth": {
     "title": "Welcome back",

@@ -20,7 +20,7 @@ export default async function LocaleLayout({
     <NextIntlClientProvider>
       <DirectionProvider>
         <Providers>
-          <div className="flex min-h-svh w-full flex-col">
+          <div className="flex min-h-svh w-full flex-col pt-20 sm:pt-24">
             <Header />
             {children}
           </div>

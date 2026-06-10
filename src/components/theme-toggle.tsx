@@ -1,6 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import { Sun, Moon, Monitor } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useThemeStore, type Theme } from "@/store/theme";
@@ -45,7 +46,18 @@ export function ThemeToggle() {
       aria-label={LABELS[active]}
       disabled={!mounted}
     >
-      <Icon className="size-4.5 transition-transform duration-200" />
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.span
+          key={active}
+          initial={{ opacity: 0, rotate: -90, scale: 0.6 }}
+          animate={{ opacity: 1, rotate: 0, scale: 1 }}
+          exit={{ opacity: 0, rotate: 90, scale: 0.6 }}
+          transition={{ duration: 0.2, ease: "easeInOut" }}
+          className="inline-flex"
+        >
+          <Icon className="size-4.5" />
+        </motion.span>
+      </AnimatePresence>
     </Button>
   );
 }
