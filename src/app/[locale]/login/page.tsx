@@ -2,6 +2,7 @@
 
 import { useRouter, Link } from "@/i18n/navigation";
 import { SignInForm, type AuthMethod } from "@/components/auth/sign-in-form";
+import { Card } from "@/components/ui/card";
 import { useAuthFlowStore } from "@/store/auth";
 
 export default function LoginPage() {
@@ -25,9 +26,9 @@ export default function LoginPage() {
           </Link>
         </div>
 
-        <div className="bg-card border-border rounded-2xl border p-8 shadow-sm">
+        <Card className="rounded-2xl p-8 shadow-sm">
           <SignInForm onSubmit={handleSubmit} />
-        </div>
+        </Card>
 
         <p className="text-muted-foreground text-center text-xs">
           By continuing, you agree to our Terms of Service and Privacy Policy.

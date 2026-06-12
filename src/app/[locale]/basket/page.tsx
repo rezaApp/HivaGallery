@@ -3,6 +3,7 @@
 import { useLocale, useTranslations } from "next-intl";
 import { Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { useCartStore } from "@/store/cart";
 import { formatPrice } from "@/lib/currency";
 import type { Locale } from "@/i18n/routing";
@@ -34,10 +35,7 @@ export default function BasketPage() {
       ) : (
         <section className="space-y-4">
           {items.map((item) => (
-            <div
-              key={item.id}
-              className="bg-card flex items-center gap-4 rounded-xl border p-4"
-            >
+            <Card key={item.id} className="flex items-center gap-4 p-4">
               <div className="bg-muted flex size-16 shrink-0 items-center justify-center rounded-lg">
                 <ShoppingBag className="text-muted-foreground size-6" />
               </div>
@@ -88,7 +86,7 @@ export default function BasketPage() {
               <div className="text-foreground font-semibold whitespace-nowrap">
                 {formatPrice(item.priceUsd * item.quantity, locale)}
               </div>
-            </div>
+            </Card>
           ))}
         </section>
       )}

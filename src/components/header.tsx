@@ -102,7 +102,7 @@ export function Header() {
               onClick={toggleHeader}
               aria-label={t("toggleMenu")}
               aria-pressed={!hidden}
-              className="bg-background/70 border-border/40 rounded-full shadow-lg backdrop-blur-md"
+              className="bg-background/30 border-border/40 rounded-full shadow-lg backdrop-blur-md"
             >
               <Home className="h-5 w-5" />
             </Button>
@@ -123,7 +123,7 @@ export function Header() {
           hidden && "pointer-events-none"
         )}
       >
-        <div className="bg-background/70 border-border/40 mx-auto flex h-16 max-w-7xl items-center justify-between rounded-2xl border ps-12 pe-4 shadow-lg backdrop-blur-md sm:ps-14 sm:pe-6 lg:pe-8">
+        <div className="bg-background/30 border-border/40 mx-auto flex h-16 max-w-7xl items-center justify-between rounded-2xl border ps-12 pe-4 shadow-lg backdrop-blur-lg sm:ps-14 sm:pe-6 lg:pe-8">
           {/* Brand */}
           <Link
             href="/"
@@ -216,7 +216,7 @@ export function Header() {
               transition={{ duration: 0.2, ease: "easeInOut" }}
               className="overflow-hidden md:hidden"
             >
-              <div className="bg-background/70 border-border/40 mx-auto mt-2 max-w-7xl rounded-2xl border shadow-lg backdrop-blur-md">
+              <div className="bg-background/30 border-border/40 mx-auto mt-2 max-w-7xl rounded-2xl border shadow-lg backdrop-blur-lg">
                 <nav className="flex flex-col gap-1 px-4 py-3">
                   {navLinks.map(({ href, label }) => (
                     <Link

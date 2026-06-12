@@ -4,9 +4,16 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
 import { Phone, Mail } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import {
+  emailSchema,
+  mobileSchema,
+  type CredentialFormValues,
+} from "@/lib/validations/auth";
 
 export type AuthMethod = "mobile" | "email";
 
@@ -16,18 +23,26 @@ interface Props {
 
 export function SignInForm({ onSubmit }: Props) {
   const t = useTranslations("auth");
+  const tv = useTranslations("validation");
   const [method, setMethod] = useState<AuthMethod>("mobile");
-  const [value, setValue] = useState("");
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<CredentialFormValues>({
+    resolver: zodResolver(method === "email" ? emailSchema : mobileSchema),
+    defaultValues: { value: "" },
+  });
 
   function switchMethod(next: AuthMethod) {
     setMethod(next);
-    setValue("");
+    reset({ value: "" });
   }
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!value.trim()) return;
-    onSubmit(value.trim(), method);
+  function onValid(values: CredentialFormValues) {
+    onSubmit(values.value.trim(), method);
   }
 
   return (
@@ -71,21 +86,33 @@ export function SignInForm({ onSubmit }: Props) {
         ))}
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <Input
-          key={method}
-          type={method === "email" ? "email" : "tel"}
-          inputMode={method === "email" ? "email" : "numeric"}
-          placeholder={t(
-            method === "mobile" ? "mobilePlaceholder" : "emailPlaceholder"
+      <form onSubmit={handleSubmit(onValid)} className="space-y-4">
+        <div className="space-y-1.5">
+          <Input
+            key={method}
+            type={method === "email" ? "email" : "tel"}
+            inputMode={method === "email" ? "email" : "numeric"}
+            placeholder={t(
+              method === "mobile" ? "mobilePlaceholder" : "emailPlaceholder"
+            )}
+            autoComplete={method === "email" ? "email" : "tel"}
+            dir="ltr"
+            autoFocus
+            aria-invalid={!!errors.value}
+            {...register("value")}
+          />
+          {errors.value && (
+            <p className="text-destructive text-xs">
+              {tv(
+                errors.value.message as
+                  | "required"
+                  | "invalidEmail"
+                  | "invalidMobile"
+              )}
+            </p>
           )}
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          autoComplete={method === "email" ? "email" : "tel"}
-          dir="ltr"
-          autoFocus
-        />
-        <Button type="submit" className="h-10 w-full" disabled={!value.trim()}>
+        </div>
+        <Button type="submit" className="h-10 w-full">
           {t("continue")}
         </Button>
       </form>

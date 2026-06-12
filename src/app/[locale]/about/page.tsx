@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import { Target, Eye, Sparkles, Shield, Zap } from "lucide-react";
+import { Card } from "@/components/ui/card";
 
 export default function AboutPage() {
   const t = useTranslations("about");
@@ -22,7 +23,7 @@ export default function AboutPage() {
       </section>
 
       <section className="grid gap-8 md:grid-cols-2">
-        <div className="bg-card space-y-3 rounded-xl border p-8">
+        <Card className="space-y-3 p-8">
           <div className="bg-primary/10 flex size-10 items-center justify-center rounded-lg">
             <Target className="text-primary size-5" />
           </div>
@@ -30,8 +31,8 @@ export default function AboutPage() {
             {t("missionTitle")}
           </h2>
           <p className="text-muted-foreground">{t("missionText")}</p>
-        </div>
-        <div className="bg-card space-y-3 rounded-xl border p-8">
+        </Card>
+        <Card className="space-y-3 p-8">
           <div className="bg-primary/10 flex size-10 items-center justify-center rounded-lg">
             <Eye className="text-primary size-5" />
           </div>
@@ -39,7 +40,7 @@ export default function AboutPage() {
             {t("visionTitle")}
           </h2>
           <p className="text-muted-foreground">{t("visionText")}</p>
-        </div>
+        </Card>
       </section>
 
       <section className="space-y-8">

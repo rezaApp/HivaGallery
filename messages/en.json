@@ -1,4 +1,23 @@
 {
+  "home": {
+    "carousel": {
+      "slide1Title": "Welcome to Hiva",
+      "slide1Subtitle": "Building the future of digital experiences",
+      "slide2Title": "Our Mission",
+      "slide2Subtitle": "Innovative solutions that connect people and simplify complex challenges",
+      "slide3Title": "Crafted With Care",
+      "slide3Subtitle": "Every detail designed with purpose and precision",
+      "slide4Title": "Our Vision",
+      "slide4Subtitle": "A world where technology empowers everyone to achieve more",
+      "slide5Title": "Join the Journey",
+      "slide5Subtitle": "Discover what's next for Hiva",
+      "slide6Title": "Timeless Craftsmanship",
+      "slide6Subtitle": "Quality that stands the test of time",
+      "prev": "Previous slide",
+      "next": "Next slide",
+      "goToSlide": "Go to slide {number}"
+    }
+  },
   "nav": {
     "home": "Home",
     "about": "About",
@@ -54,6 +73,11 @@
     "empty": "Your basket is empty.",
     "total": "Total",
     "checkout": "Checkout"
+  },
+  "validation": {
+    "required": "This field is required.",
+    "invalidEmail": "Please enter a valid email address.",
+    "invalidMobile": "Please enter a valid mobile number."
   },
   "auth": {
     "title": "Welcome back",

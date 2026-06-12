@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "@/i18n/navigation";
 import { OtpForm } from "@/components/auth/otp-form";
+import { Card } from "@/components/ui/card";
 import { useAuthFlowStore } from "@/store/auth";
 
 export default function OtpVerifyPage() {
@@ -29,14 +30,14 @@ export default function OtpVerifyPage() {
 
   return (
     <main className="flex w-full flex-1 flex-col items-center justify-center px-4 py-12">
-      <div className="bg-card border-border w-full max-w-sm rounded-2xl border p-8 shadow-sm">
+      <Card className="w-full max-w-sm rounded-2xl p-8 shadow-sm">
         <OtpForm
           credential={credential}
           method={method}
           onBack={handleBack}
           onVerify={handleVerify}
         />
-      </div>
+      </Card>
     </main>
   );
 }
