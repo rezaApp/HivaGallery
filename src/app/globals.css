@@ -32,6 +32,7 @@
   --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
   --color-muted: var(--muted);
+  --color-nav-link: var(--nav-link);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary: var(--secondary);
   --color-primary-foreground: var(--primary-foreground);
@@ -69,6 +70,7 @@
 
   --muted: oklch(82.72% 0.01 72.66);
   --muted-foreground: oklch(53.65% 0.053 72.52); /* taupe-600 */
+  --nav-link: oklch(90.92% 0.01252 75.239); /* taupe-600, 20% lighter */
 
   --accent: oklch(77.27% 0.054 76.17);
   --accent-foreground: oklch(23.67% 0.034 74.46); /* champagne-mist-900 */
@@ -118,6 +120,7 @@
 
   --muted: oklch(43.89% 0.039 68.99);
   --muted-foreground: oklch(70.63% 0.05 73.05); /* taupe-400 */
+  --nav-link: var(--muted-foreground);
 
   --accent: oklch(46.17% 0.061 72.73);
   --accent-foreground: oklch(93.59% 0.026 76.79); /* champagne-mist-100 */

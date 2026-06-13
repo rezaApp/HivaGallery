@@ -35,18 +35,22 @@ export default function BasketPage() {
       ) : (
         <section className="space-y-4">
           {items.map((item) => (
-            <Card key={item.id} className="flex items-center gap-4 p-4">
-              <div className="bg-muted flex size-16 shrink-0 items-center justify-center rounded-lg">
-                <ShoppingBag className="text-muted-foreground size-6" />
+            <Card key={item.id} className="flex flex-col gap-4 p-4">
+              <div className="flex items-center gap-4">
+                <div className="bg-muted flex size-16 shrink-0 items-center justify-center rounded-lg">
+                  <ShoppingBag className="text-muted-foreground size-6" />
+                </div>
+                <div className="flex-1 space-y-1">
+                  <h2 className="text-card-foreground font-semibold">
+                    {t(`${item.nameKey}Name`)}
+                  </h2>
+                  <p className="text-muted-foreground text-sm">
+                    {t(`${item.nameKey}Desc`)}
+                  </p>
+                </div>
               </div>
-              <div className="flex-1 space-y-1">
-                <h2 className="text-card-foreground font-semibold">
-                  {t(`${item.nameKey}Name`)}
-                </h2>
-                <p className="text-muted-foreground text-sm">
-                  {t(`${item.nameKey}Desc`)}
-                </p>
-                <div className="flex items-center gap-2 pt-1">
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
                   <span className="text-muted-foreground text-sm">
                     {t("quantity")}:
                   </span>
@@ -82,9 +86,9 @@ export default function BasketPage() {
                     </Button>
                   </div>
                 </div>
-              </div>
-              <div className="text-foreground font-semibold whitespace-nowrap">
-                {formatPrice(item.priceUsd * item.quantity, locale)}
+                <div className="text-foreground font-semibold whitespace-nowrap">
+                  {formatPrice(item.priceUsd * item.quantity, locale)}
+                </div>
               </div>
             </Card>
           ))}
