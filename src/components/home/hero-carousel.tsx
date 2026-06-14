@@ -10,12 +10,36 @@ import { cn } from "@/lib/utils";
 const AUTOPLAY_MS = 6000;
 
 const SLIDES = [
-  { key: "slide1", image: "/images/hero/slide-1.png" },
-  { key: "slide2", image: "/images/hero/slide-2.png" },
-  { key: "slide3", image: "/images/hero/slide-3.png" },
-  { key: "slide4", image: "/images/hero/slide-4.png" },
-  { key: "slide5", image: "/images/hero/slide-5.png" },
-  { key: "slide6", image: "/images/hero/slide-6.png" },
+  {
+    key: "slide1",
+    image: "/images/hero/slide-1.png",
+    portraitImage: "/images/hero/portrate/slide-1-portrait.jpg",
+  },
+  {
+    key: "slide2",
+    image: "/images/hero/slide-2.png",
+    portraitImage: "/images/hero/portrate/slide-2-portrait.jpg",
+  },
+  {
+    key: "slide3",
+    image: "/images/hero/slide-3.png",
+    portraitImage: "/images/hero/portrate/slide-3-portrait.jpg",
+  },
+  {
+    key: "slide4",
+    image: "/images/hero/slide-4.png",
+    portraitImage: "/images/hero/portrate/slide-4-portrait.jpg",
+  },
+  {
+    key: "slide5",
+    image: "/images/hero/slide-5.png",
+    portraitImage: "/images/hero/portrate/slide-5-portrait.jpg",
+  },
+  {
+    key: "slide6",
+    image: "/images/hero/slide-6.png",
+    portraitImage: "/images/hero/portrate/slide-6-portrait.jpg",
+  },
 ] as const;
 
 export function HeroCarousel() {
@@ -54,15 +78,23 @@ export function HeroCarousel() {
           className="absolute inset-0"
         >
           <Image
+            src={slide.portraitImage}
+            alt={t(`${slide.key}Title`)}
+            fill
+            preload={index === 0}
+            sizes="100vw"
+            className="object-cover sm:hidden"
+          />
+          <Image
             src={slide.image}
             alt={t(`${slide.key}Title`)}
             fill
             preload={index === 0}
             sizes="100vw"
-            className="object-cover"
+            className="hidden object-cover sm:block"
           />
           <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-black/40" />
-          <div className="relative flex h-full flex-col items-center justify-center gap-3 px-4 text-center sm:gap-4 sm:px-6">
+          <div className="relative flex h-full flex-col items-start justify-center gap-3 px-4 ps-6 text-start sm:gap-4 sm:px-12 sm:ps-20">
             <h2 className="text-2xl font-bold tracking-tight text-white drop-shadow-md sm:text-4xl md:text-5xl lg:text-6xl">
               {t(`${slide.key}Title`)}
             </h2>
