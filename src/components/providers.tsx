@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { ThemeProvider, useTheme } from "next-themes";
 import { useThemeStore } from "@/store/theme";
+import { ToastContainer } from "@/components/ui/toast";
 
 function ThemeSync() {
   const { setTheme } = useTheme();
@@ -20,6 +21,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <ThemeSync />
       {children}
+      <ToastContainer />
     </ThemeProvider>
   );
 }

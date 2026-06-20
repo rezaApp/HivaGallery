@@ -42,10 +42,10 @@ export default function BasketPage() {
                 </div>
                 <div className="flex-1 space-y-1">
                   <h2 className="text-card-foreground font-semibold">
-                    {t(`${item.nameKey}Name`)}
+                    {item.name}
                   </h2>
                   <p className="text-muted-foreground text-sm">
-                    {t(`${item.nameKey}Desc`)}
+                    {item.description}
                   </p>
                 </div>
               </div>

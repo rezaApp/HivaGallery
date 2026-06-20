@@ -21,6 +21,7 @@
   "nav": {
     "home": "Home",
     "about": "About",
+    "products": "Products",
     "contact": "Contact",
     "signIn": "Sign In",
     "basket": "Basket",
@@ -73,6 +74,78 @@
     "empty": "Your basket is empty.",
     "total": "Total",
     "checkout": "Checkout"
+  },
+  "products": {
+    "title": "Products",
+    "subtitle": "Browse our collection of {count} products",
+    "sortBy": "Sort by",
+    "sortNameAsc": "Name A→Z",
+    "sortNameDesc": "Name Z→A",
+    "sortPriceAsc": "Price ↑",
+    "sortPriceDesc": "Price ↓",
+    "columns": "Columns",
+    "columnsAriaLabel": "{count} columns",
+    "category": "Category",
+    "clearFilters": "Clear filters",
+    "showing": "Showing {from}–{to} of {total} products",
+    "noResults": "No products match your filters.",
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "pageOf": "Page {page} of {total}",
+      "goToPage": "Page {page}"
+    },
+    "addedToBasket": "Product added to basket successfully",
+    "addToBasket": "Add {name} to basket",
+    "categories": {
+      "electronics": "Electronics",
+      "sports": "Sports",
+      "kitchen": "Kitchen",
+      "accessories": "Accessories",
+      "homeOffice": "Home & Office"
+    },
+    "items": {
+      "1": {
+        "name": "Wireless Headphones",
+        "description": "Noise-cancelling over-ear headphones with 30-hour battery life and premium sound quality."
+      },
+      "2": {
+        "name": "Smart Watch",
+        "description": "Fitness tracker with heart-rate monitor, GPS, and 7-day battery life."
+      },
+      "3": {
+        "name": "Running Shoes",
+        "description": "Lightweight and breathable shoes with responsive cushioning for all distances."
+      },
+      "4": {
+        "name": "Yoga Mat",
+        "description": "Non-slip, eco-friendly 6mm thick mat with alignment lines and carry strap."
+      },
+      "5": {
+        "name": "Coffee Maker",
+        "description": "12-cup programmable drip coffee maker with built-in grinder and thermal carafe."
+      },
+      "6": {
+        "name": "Leather Wallet",
+        "description": "Slim genuine leather bi-fold wallet with RFID blocking and 8 card slots."
+      },
+      "7": {
+        "name": "Sunglasses",
+        "description": "Polarized UV400 protection sunglasses with titanium frames and scratch-resistant lenses."
+      },
+      "8": {
+        "name": "Water Bottle",
+        "description": "Double-walled insulated stainless steel bottle, keeps cold 24h and hot 12h."
+      },
+      "9": {
+        "name": "Desk Lamp",
+        "description": "LED desk lamp with adjustable color temperature, USB charging port, and touch control."
+      },
+      "10": {
+        "name": "Mechanical Keyboard",
+        "description": "Compact TKL mechanical keyboard with tactile switches and per-key RGB backlighting."
+      }
+    }
   },
   "validation": {
     "required": "This field is required.",

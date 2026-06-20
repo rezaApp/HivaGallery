@@ -3,13 +3,15 @@ import { persist, createJSONStorage } from "zustand/middleware";
 
 export interface CartItem {
   id: string;
-  nameKey: "product1" | "product2";
+  name: string;
+  description: string;
   priceUsd: number;
   quantity: number;
 }
 
 interface CartStore {
   items: CartItem[];
+  addItem: (product: Omit<CartItem, "quantity">) => void;
   increment: (id: string) => void;
   decrement: (id: string) => void;
   removeItem: (id: string) => void;
@@ -18,10 +20,23 @@ interface CartStore {
 export const useCartStore = create<CartStore>()(
   persist(
     (set) => ({
-      items: [
-        { id: "1", nameKey: "product1", priceUsd: 59.99, quantity: 1 },
-        { id: "2", nameKey: "product2", priceUsd: 24.5, quantity: 2 },
-      ],
+      items: [],
+      addItem: (product) =>
+        set((state) => {
+          const existing = state.items.find((item) => item.id === product.id);
+          if (existing) {
+            return {
+              items: state.items.map((item) =>
+                item.id === product.id
+                  ? { ...item, quantity: item.quantity + 1 }
+                  : item
+              ),
+            };
+          }
+          return {
+            items: [...state.items, { ...product, quantity: 1 }],
+          };
+        }),
       increment: (id) =>
         set((state) => ({
           items: state.items.map((item) =>
@@ -43,6 +58,7 @@ export const useCartStore = create<CartStore>()(
     }),
     {
       name: "user-cart",
+      version: 2,
       storage: createJSONStorage(() =>
         typeof window !== "undefined" ? localStorage : sessionStorage
       ),
