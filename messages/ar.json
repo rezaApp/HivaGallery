@@ -25,7 +25,9 @@
     "contact": "اتصل بنا",
     "signIn": "تسجيل الدخول",
     "basket": "السلة",
-    "toggleMenu": "إظهار أو إخفاء القائمة"
+    "toggleMenu": "إظهار أو إخفاء القائمة",
+    "shopByCategory": "تسوّق حسب الفئة",
+    "viewAll": "عرض جميع المنتجات"
   },
   "language": {
     "label": "اللغة",
@@ -89,6 +91,64 @@
     "clearFilters": "مسح الفلاتر",
     "showing": "عرض {from}–{to} من أصل {total} منتج",
     "noResults": "لا توجد منتجات تطابق الفلاتر المحددة.",
+    "selectCategoryHint": "اختر فئة لاستعراض الفئات الفرعية",
+    "detail": {
+      "descriptionTitle": "عن هذا المنتج",
+      "specsTitle": "المواصفات التقنية",
+      "reviewsTitle": "آراء العملاء",
+      "relatedTitle": "منتجات ذات صلة",
+      "quantity": "الكمية",
+      "inStock": "متوفر",
+      "addToBasket": "أضف إلى السلة",
+      "verifiedPurchase": "شراء موثق",
+      "noReviews": "لا توجد تقييمات بعد",
+      "ratingLabel": "{rating} من 5",
+      "reviewsCount": "{count} تقييمات",
+      "notFound": "المنتج غير موجود",
+      "backToProducts": "العودة إلى المنتجات",
+      "specKeys": {
+        "noiseCancelling": "إلغاء الضوضاء",
+        "driver": "حجم الدرايفر",
+        "frequency": "الاستجابة الترددية",
+        "battery": "عمر البطارية",
+        "connectivity": "الاتصال",
+        "weight": "الوزن",
+        "display": "الشاشة",
+        "waterResistance": "مقاومة الماء",
+        "gps": "GPS",
+        "strap": "مادة الحزام",
+        "material": "المادة",
+        "sole": "نوع النعل",
+        "closure": "نوع الإغلاق",
+        "drop": "ارتفاع القطرة",
+        "thickness": "السُّمك",
+        "dimensions": "الأبعاد",
+        "texture": "ملمس السطح",
+        "capacity": "السعة",
+        "grinder": "مطحنة مدمجة",
+        "programmable": "مؤقت قابل للبرمجة",
+        "carafeType": "نوع الجرة",
+        "power": "الطاقة",
+        "slots": "فتحات البطاقات",
+        "protection": "حماية RFID",
+        "lens": "نوع العدسة",
+        "frame": "مادة الإطار",
+        "uv": "حماية الأشعة فوق البنفسجية",
+        "style": "النمط",
+        "insulation": "نوع العزل",
+        "cold": "الحفاظ على البرودة",
+        "hot": "الحفاظ على الحرارة",
+        "volume": "الحجم",
+        "technology": "تقنية الإضاءة",
+        "brightness": "السطوع",
+        "colorTemp": "درجة حرارة اللون",
+        "usbPort": "منفذ شحن USB",
+        "control": "طريقة التحكم",
+        "layout": "تخطيط لوحة المفاتيح",
+        "switches": "نوع المفاتيح",
+        "backlighting": "الإضاءة الخلفية"
+      }
+    },
     "pagination": {
       "previous": "السابق",
       "next": "التالي",
@@ -103,6 +163,31 @@
       "kitchen": "مطبخ",
       "accessories": "إكسسوارات",
       "homeOffice": "المنزل والمكتب"
+    },
+    "subcategories": {
+      "electronics": {
+        "audio": "سماعات وصوت",
+        "wearables": "الساعات الذكية",
+        "peripherals": "لوحات المفاتيح والملحقات"
+      },
+      "sports": {
+        "running": "الركض والمشي",
+        "yoga": "اليوغا والبيلاتس",
+        "hydration": "الترطيب"
+      },
+      "kitchen": {
+        "coffee": "القهوة والمشروبات",
+        "appliances": "أجهزة المطبخ"
+      },
+      "accessories": {
+        "wallets": "المحافظ والبطاقات",
+        "eyewear": "النظارات",
+        "watches": "الساعات"
+      },
+      "homeOffice": {
+        "lighting": "الإضاءة",
+        "desk": "المكتب والملحقات"
+      }
     },
     "items": {
       "1": {
@@ -150,7 +235,70 @@
   "validation": {
     "required": "هذا الحقل مطلوب.",
     "invalidEmail": "يرجى إدخال بريد إلكتروني صالح.",
-    "invalidMobile": "يرجى إدخال رقم جوال صالح."
+    "invalidMobile": "يرجى إدخال رقم جوال صالح.",
+    "invalidPhone": "يرجى إدخال رقم هاتف صالح.",
+    "addressTooShort": "يرجى إدخال عنوان أكثر تفصيلاً."
+  },
+  "checkout": {
+    "title": "إتمام الطلب",
+    "steps": {
+      "address": "العنوان",
+      "delivery": "التسليم",
+      "payment": "الدفع"
+    },
+    "address": {
+      "title": "عنوان التوصيل",
+      "subtitle": "إلى أين نوصل طلبك؟",
+      "fullName": "الاسم الكامل",
+      "fullNamePlaceholder": "اسمك الكامل",
+      "phone": "رقم الهاتف",
+      "phonePlaceholder": "مثال: 0512345678",
+      "province": "المحافظة",
+      "provincePlaceholder": "أدخل محافظتك",
+      "city": "المدينة",
+      "cityPlaceholder": "أدخل مدينتك",
+      "address": "العنوان التفصيلي",
+      "addressPlaceholder": "الشارع، رقم المبنى، الطابق، الشقة...",
+      "postalCode": "الرمز البريدي (اختياري)",
+      "postalCodePlaceholder": "الرمز البريدي",
+      "mapTitle": "الموقع الدقيق (اختياري)",
+      "mapSubtitle": "انقر في أي مكان على الخريطة لإضافة دبوس. يمكنك سحبه للتعديل الدقيق.",
+      "mapHint": "انقر في أي مكان على الخريطة لتحديد موقع التوصيل.",
+      "locationDetected": "العنوان المُكتشف:",
+      "pinLocation": "تحديد على الخريطة",
+      "hideMap": "إخفاء الخريطة",
+      "removePin": "إزالة الدبوس",
+      "next": "متابعة إلى موعد التسليم"
+    },
+    "delivery": {
+      "title": "موعد التسليم",
+      "subtitle": "متى تريد استلام طلبك؟",
+      "selectDate": "اختر تاريخاً",
+      "selectTime": "اختر فترة زمنية",
+      "today": "اليوم",
+      "tomorrow": "غداً",
+      "dayAfterTomorrow": "بعد غد",
+      "morning": "صباحاً",
+      "morningTime": "8:00 – 12:00",
+      "afternoon": "ظهراً",
+      "afternoonTime": "12:00 – 16:00",
+      "evening": "مساءً",
+      "eveningTime": "16:00 – 20:00",
+      "slotRequired": "يرجى اختيار فترة زمنية",
+      "back": "رجوع",
+      "next": "متابعة إلى الدفع"
+    },
+    "payment": {
+      "title": "الدفع",
+      "subtitle": "راجع طلبك وأتمّ عملية الدفع",
+      "orderSummary": "ملخص الطلب",
+      "deliveryInfo": "موعد التسليم",
+      "addressInfo": "عنوان التسليم",
+      "total": "الإجمالي",
+      "pay": "ادفع الآن",
+      "back": "رجوع",
+      "locationPinned": "تم تحديد الموقع على الخريطة"
+    }
   },
   "auth": {
     "title": "مرحباً بعودتك",

@@ -11,7 +11,7 @@ export default function Home() {
           {t("home")}
         </h1>
         <p className="text-muted-foreground mt-4 text-lg">
-          Welcome to Hiva. Edit{" "}
+          Welcome to HIVA. Edit{" "}
           <code className="bg-muted rounded px-1.5 py-0.5 font-mono text-sm">
             src/app/[locale]/page.tsx
           </code>{" "}

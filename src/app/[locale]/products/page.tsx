@@ -1,37 +1,117 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { Suspense, useState, useMemo } from "react";
 import { useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
 import {
+  Activity,
   ArrowUpAZ,
   ArrowDownAZ,
   ArrowUpNarrowWide,
   ArrowDownWideNarrow,
   ChevronLeft,
   ChevronRight,
+  Coffee,
+  Cpu,
+  Laptop,
+  Tag,
+  X,
 } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import { Button } from "@/components/ui/button";
-import { ProductCard, type Product } from "@/components/products/product-card";
+import { ProductCard } from "@/components/products/product-card";
 import { cn } from "@/lib/utils";
+import type { ProductCategory, ProductSortKey, ProductCardDto } from "@/types";
 
 const PAGE_SIZE = 6;
 
-const PRODUCT_DATA: { id: string; priceUsd: number; categoryKey: string }[] = [
-  { id: "1", priceUsd: 59.99, categoryKey: "electronics" },
-  { id: "2", priceUsd: 24.5, categoryKey: "electronics" },
-  { id: "3", priceUsd: 89.99, categoryKey: "sports" },
-  { id: "4", priceUsd: 35.0, categoryKey: "sports" },
-  { id: "5", priceUsd: 149.99, categoryKey: "kitchen" },
-  { id: "6", priceUsd: 45.0, categoryKey: "accessories" },
-  { id: "7", priceUsd: 75.0, categoryKey: "accessories" },
-  { id: "8", priceUsd: 22.0, categoryKey: "sports" },
-  { id: "9", priceUsd: 38.99, categoryKey: "homeOffice" },
-  { id: "10", priceUsd: 129.0, categoryKey: "electronics" },
+const PRODUCT_DATA: {
+  id: string;
+  priceUsd: number;
+  categoryKey: string;
+  subcategoryKey: string;
+}[] = [
+  {
+    id: "1",
+    priceUsd: 59.99,
+    categoryKey: "electronics",
+    subcategoryKey: "audio",
+  },
+  {
+    id: "2",
+    priceUsd: 24.5,
+    categoryKey: "electronics",
+    subcategoryKey: "wearables",
+  },
+  {
+    id: "3",
+    priceUsd: 89.99,
+    categoryKey: "sports",
+    subcategoryKey: "running",
+  },
+  { id: "4", priceUsd: 35.0, categoryKey: "sports", subcategoryKey: "yoga" },
+  {
+    id: "5",
+    priceUsd: 149.99,
+    categoryKey: "kitchen",
+    subcategoryKey: "coffee",
+  },
+  {
+    id: "6",
+    priceUsd: 45.0,
+    categoryKey: "accessories",
+    subcategoryKey: "wallets",
+  },
+  {
+    id: "7",
+    priceUsd: 75.0,
+    categoryKey: "accessories",
+    subcategoryKey: "eyewear",
+  },
+  {
+    id: "8",
+    priceUsd: 22.0,
+    categoryKey: "sports",
+    subcategoryKey: "hydration",
+  },
+  {
+    id: "9",
+    priceUsd: 38.99,
+    categoryKey: "homeOffice",
+    subcategoryKey: "lighting",
+  },
+  {
+    id: "10",
+    priceUsd: 129.0,
+    categoryKey: "electronics",
+    subcategoryKey: "peripherals",
+  },
 ];
 
-const CATEGORY_KEYS = Array.from(
-  new Set(PRODUCT_DATA.map((p) => p.categoryKey))
-);
+// Canonical ordered list keeps the sidebar order stable
+const CATEGORY_KEYS: ProductCategory[] = [
+  "electronics",
+  "sports",
+  "kitchen",
+  "accessories",
+  "homeOffice",
+];
+
+const CATEGORY_ICONS: Record<ProductCategory, React.ElementType> = {
+  electronics: Cpu,
+  sports: Activity,
+  kitchen: Coffee,
+  accessories: Tag,
+  homeOffice: Laptop,
+};
+
+const SUBCATEGORY_MAP: Record<ProductCategory, string[]> = {
+  electronics: ["audio", "wearables", "peripherals"],
+  sports: ["running", "yoga", "hydration"],
+  kitchen: ["coffee", "appliances"],
+  accessories: ["wallets", "eyewear", "watches"],
+  homeOffice: ["lighting", "desk"],
+};
 
 const SORT_ICONS = {
   "name-asc": ArrowUpAZ,
@@ -40,7 +120,6 @@ const SORT_ICONS = {
   "price-desc": ArrowDownWideNarrow,
 } as const;
 
-type SortKey = keyof typeof SORT_ICONS;
 type Columns = 3 | 4 | 6;
 
 const GRID_COLS: Record<Columns, string> = {
@@ -58,14 +137,32 @@ function getPageNumbers(current: number, total: number): (number | "...")[] {
 }
 
 export default function ProductsPage() {
-  const t = useTranslations("products");
+  return (
+    <Suspense>
+      <ProductsContent />
+    </Suspense>
+  );
+}
 
-  const [sort, setSort] = useState<SortKey>("name-asc");
-  const [activeKeys, setActiveKeys] = useState<Set<string>>(new Set());
+function ProductsContent() {
+  const t = useTranslations("products");
+  const searchParams = useSearchParams();
+
+  const [sort, setSort] = useState<ProductSortKey>("name-asc");
+  const [activeCategoryKey, setActiveCategoryKey] =
+    useState<ProductCategory | null>(() => {
+      const cat = searchParams.get("category");
+      return (CATEGORY_KEYS as string[]).includes(cat ?? "")
+        ? (cat as ProductCategory)
+        : null;
+    });
+  const [activeSubcategory, setActiveSubcategory] = useState<string | null>(
+    () => searchParams.get("subcategory")
+  );
   const [columns, setColumns] = useState<Columns>(4);
   const [page, setPage] = useState(1);
 
-  const categoryLabels: Record<string, string> = {
+  const categoryLabels: Record<ProductCategory, string> = {
     electronics: t("categories.electronics"),
     sports: t("categories.sports"),
     kitchen: t("categories.kitchen"),
@@ -73,8 +170,12 @@ export default function ProductsPage() {
     homeOffice: t("categories.homeOffice"),
   };
 
+  function getSubcatLabel(catKey: string, subKey: string) {
+    return t(`subcategories.${catKey}.${subKey}` as Parameters<typeof t>[0]);
+  }
+
   const sortOptions: {
-    key: SortKey;
+    key: ProductSortKey;
     label: string;
     Icon: React.ElementType;
   }[] = [
@@ -96,19 +197,27 @@ export default function ProductsPage() {
     },
   ];
 
-  const allProducts: Product[] = PRODUCT_DATA.map((data) => ({
+  const allProducts: ProductCardDto[] = PRODUCT_DATA.map((data) => ({
     id: data.id,
     priceUsd: data.priceUsd,
-    categoryKey: data.categoryKey,
-    category: categoryLabels[data.categoryKey] ?? data.categoryKey,
+    categoryKey: data.categoryKey as ProductCategory,
+    subcategoryKey: data.subcategoryKey,
+    categoryLabel:
+      categoryLabels[data.categoryKey as ProductCategory] ?? data.categoryKey,
     name: t(`items.${data.id}.name` as Parameters<typeof t>[0]),
     description: t(`items.${data.id}.description` as Parameters<typeof t>[0]),
   }));
 
   const filtered = useMemo(() => {
     let result = [...allProducts];
-    if (activeKeys.size > 0) {
-      result = result.filter((p) => activeKeys.has(p.categoryKey));
+    if (activeCategoryKey) {
+      result = result.filter((p) => p.categoryKey === activeCategoryKey);
+    }
+    if (activeSubcategory) {
+      result = result.filter(
+        (p) =>
+          p.subcategoryKey != null && p.subcategoryKey === activeSubcategory
+      );
     }
     result.sort((a, b) => {
       switch (sort) {
@@ -124,7 +233,7 @@ export default function ProductsPage() {
     });
     return result;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sort, activeKeys, t]);
+  }, [sort, activeCategoryKey, activeSubcategory, t]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const safePage = Math.min(page, totalPages);
@@ -133,27 +242,37 @@ export default function ProductsPage() {
   const paginated = filtered.slice(from - 1, to);
   const pageNumbers = getPageNumbers(safePage, totalPages);
 
-  function handleSort(key: SortKey) {
+  const subcategoryOptions = activeCategoryKey
+    ? (SUBCATEGORY_MAP[activeCategoryKey] ?? [])
+    : [];
+  const hasFilters = activeCategoryKey !== null || activeSubcategory !== null;
+
+  function handleSelectCategory(key: ProductCategory) {
+    const next = activeCategoryKey === key ? null : key;
+    setActiveCategoryKey(next);
+    setActiveSubcategory(null);
+    setPage(1);
+  }
+
+  function handleSubcategory(subKey: string) {
+    setActiveSubcategory((prev) => (prev === subKey ? null : subKey));
+    setPage(1);
+  }
+
+  function handleSort(key: ProductSortKey) {
     setSort(key);
     setPage(1);
   }
-  function handleToggleKey(key: string) {
-    setActiveKeys((prev) => {
-      const next = new Set(prev);
-      if (next.has(key)) next.delete(key);
-      else next.add(key);
-      return next;
-    });
-    setPage(1);
-  }
+
   function handleClearFilters() {
-    setActiveKeys(new Set());
+    setActiveCategoryKey(null);
+    setActiveSubcategory(null);
     setPage(1);
   }
 
   return (
     <main className="mx-auto w-full max-w-7xl space-y-8 px-4 py-12 sm:px-6 lg:px-8">
-      {/* Header */}
+      {/* Page header */}
       <section className="space-y-1">
         <h1 className="text-foreground text-4xl font-bold tracking-tight sm:text-5xl">
           {t("title")}
@@ -163,7 +282,7 @@ export default function ProductsPage() {
         </p>
       </section>
 
-      {/* Sort + Columns row */}
+      {/* Sort + Columns */}
       <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
         <div className="space-y-2">
           <p className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
@@ -206,33 +325,74 @@ export default function ProductsPage() {
         </div>
       </div>
 
-      {/* Category filters */}
+      {/* ── Two-row category filter ── */}
       <div className="space-y-2">
-        <p className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
-          {t("category")}
-        </p>
+        {/* Row 1 — Category pills */}
         <div className="flex flex-wrap gap-2">
-          {CATEGORY_KEYS.map((key) => (
-            <Button
-              key={key}
-              size="sm"
-              variant={activeKeys.has(key) ? "default" : "outline"}
-              onClick={() => handleToggleKey(key)}
-            >
-              {categoryLabels[key]}
-            </Button>
-          ))}
-          {activeKeys.size > 0 && (
-            <Button
-              size="sm"
-              variant="ghost"
+          {CATEGORY_KEYS.map((key) => {
+            const Icon = CATEGORY_ICONS[key];
+            const isActive = activeCategoryKey === key;
+            return (
+              <button
+                key={key}
+                type="button"
+                onClick={() => handleSelectCategory(key)}
+                className={cn(
+                  "flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-all",
+                  isActive
+                    ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                    : "border-border text-muted-foreground hover:border-primary/40 hover:bg-accent hover:text-foreground"
+                )}
+              >
+                <Icon className="size-4 shrink-0" />
+                {categoryLabels[key]}
+              </button>
+            );
+          })}
+
+          {hasFilters && (
+            <button
+              type="button"
               onClick={handleClearFilters}
-              className="text-muted-foreground"
+              className="text-muted-foreground hover:text-foreground flex items-center gap-1.5 rounded-full border border-transparent px-3 py-2 text-sm transition-colors"
             >
+              <X className="size-3.5" />
               {t("clearFilters")}
-            </Button>
+            </button>
           )}
         </div>
+
+        {/* Row 2 — Subcategory pills (animated) */}
+        <AnimatePresence>
+          {activeCategoryKey && subcategoryOptions.length > 0 && (
+            <motion.div
+              key={activeCategoryKey}
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2, ease: "easeInOut" }}
+              className="overflow-hidden"
+            >
+              <div className="flex flex-wrap gap-2 ps-1 pt-1">
+                {subcategoryOptions.map((subKey) => (
+                  <button
+                    key={subKey}
+                    type="button"
+                    onClick={() => handleSubcategory(subKey)}
+                    className={cn(
+                      "rounded-full border px-3 py-1.5 text-xs font-medium transition-all",
+                      activeSubcategory === subKey
+                        ? "bg-primary/10 border-primary text-primary"
+                        : "border-border text-muted-foreground hover:border-primary/40 hover:text-foreground"
+                    )}
+                  >
+                    {getSubcatLabel(activeCategoryKey, subKey)}
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Showing count */}

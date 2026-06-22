@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import type { AuthMethod } from "./sign-in-form";
+import type { AuthMethod } from "@/types";
 
 const OTP_LENGTH = 6;
 const RESEND_SECONDS = 120;

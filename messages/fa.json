@@ -25,7 +25,9 @@
     "contact": "تماس با ما",
     "signIn": "ورود",
     "basket": "سبد خرید",
-    "toggleMenu": "نمایش یا مخفی کردن منو"
+    "toggleMenu": "نمایش یا مخفی کردن منو",
+    "shopByCategory": "خرید بر اساس دسته‌بندی",
+    "viewAll": "مشاهده همه محصولات"
   },
   "language": {
     "label": "زبان",
@@ -61,7 +63,7 @@
     "success": "پیام شما ارسال شد. به زودی با شما تماس خواهیم گرفت!"
   },
   "basket": {
-    "title": "سبد خرید شما",
+    "title": "سبد خرید",
     "subtitle": "قبل از پرداخت، اقلام خود را بررسی کنید",
     "product1Name": "هدفون بی‌سیم",
     "product1Desc": "هدفون روگوشی با حذف نویز و ۳۰ ساعت باتری.",
@@ -89,6 +91,64 @@
     "clearFilters": "حذف فیلترها",
     "showing": "نمایش {from}–{to} از {total} محصول",
     "noResults": "هیچ محصولی با فیلترهای شما مطابقت ندارد.",
+    "selectCategoryHint": "یک دسته‌بندی انتخاب کنید تا زیردسته‌ها را ببینید",
+    "detail": {
+      "descriptionTitle": "درباره این محصول",
+      "specsTitle": "مشخصات فنی",
+      "reviewsTitle": "نظرات مشتریان",
+      "relatedTitle": "محصولات مرتبط",
+      "quantity": "تعداد",
+      "inStock": "موجود",
+      "addToBasket": "افزودن به سبد خرید",
+      "verifiedPurchase": "خرید تأییدشده",
+      "noReviews": "هنوز نظری ثبت نشده",
+      "ratingLabel": "{rating} از ۵",
+      "reviewsCount": "{count} نظر",
+      "notFound": "محصول یافت نشد",
+      "backToProducts": "بازگشت به محصولات",
+      "specKeys": {
+        "noiseCancelling": "حذف نویز",
+        "driver": "اندازه درایور",
+        "frequency": "پاسخ فرکانسی",
+        "battery": "عمر باتری",
+        "connectivity": "اتصال",
+        "weight": "وزن",
+        "display": "نمایشگر",
+        "waterResistance": "مقاومت آبی",
+        "gps": "GPS",
+        "strap": "جنس بند",
+        "material": "جنس",
+        "sole": "نوع زیره",
+        "closure": "نوع بسته",
+        "drop": "ارتفاع قطره",
+        "thickness": "ضخامت",
+        "dimensions": "ابعاد",
+        "texture": "بافت سطح",
+        "capacity": "ظرفیت",
+        "grinder": "آسیاب داخلی",
+        "programmable": "تایمر برنامه‌پذیر",
+        "carafeType": "نوع کارافه",
+        "power": "توان",
+        "slots": "تعداد جای کارت",
+        "protection": "محافظت RFID",
+        "lens": "نوع لنز",
+        "frame": "جنس فریم",
+        "uv": "محافظت UV",
+        "style": "سبک",
+        "insulation": "نوع عایق",
+        "cold": "نگه‌داری سرما",
+        "hot": "نگه‌داری گرما",
+        "volume": "حجم",
+        "technology": "فناوری نور",
+        "brightness": "روشنایی",
+        "colorTemp": "دمای رنگ",
+        "usbPort": "پورت شارژ USB",
+        "control": "روش کنترل",
+        "layout": "چیدمان کیبورد",
+        "switches": "نوع سوئیچ",
+        "backlighting": "نور پس‌زمینه"
+      }
+    },
     "pagination": {
       "previous": "قبلی",
       "next": "بعدی",
@@ -103,6 +163,31 @@
       "kitchen": "آشپزخانه",
       "accessories": "لوازم جانبی",
       "homeOffice": "خانه و دفتر"
+    },
+    "subcategories": {
+      "electronics": {
+        "audio": "هدفون و صدا",
+        "wearables": "ساعت هوشمند",
+        "peripherals": "کیبورد و لوازم جانبی"
+      },
+      "sports": {
+        "running": "دویدن و پیاده‌روی",
+        "yoga": "یوگا و پیلاتس",
+        "hydration": "آبرسانی"
+      },
+      "kitchen": {
+        "coffee": "قهوه و نوشیدنی",
+        "appliances": "لوازم آشپزخانه"
+      },
+      "accessories": {
+        "wallets": "کیف پول و کارت",
+        "eyewear": "عینک",
+        "watches": "ساعت"
+      },
+      "homeOffice": {
+        "lighting": "روشنایی",
+        "desk": "میز و لوازم"
+      }
     },
     "items": {
       "1": {
@@ -150,7 +235,70 @@
   "validation": {
     "required": "این فیلد الزامی است.",
     "invalidEmail": "لطفاً یک ایمیل معتبر وارد کنید.",
-    "invalidMobile": "لطفاً یک شماره موبایل معتبر وارد کنید."
+    "invalidMobile": "لطفاً یک شماره موبایل معتبر وارد کنید.",
+    "invalidPhone": "لطفاً یک شماره تلفن معتبر وارد کنید.",
+    "addressTooShort": "لطفاً آدرس کامل‌تری وارد کنید."
+  },
+  "checkout": {
+    "title": "تکمیل سفارش",
+    "steps": {
+      "address": "آدرس",
+      "delivery": "زمان ارسال",
+      "payment": "پرداخت"
+    },
+    "address": {
+      "title": "آدرس تحویل",
+      "subtitle": "سفارش شما به کجا ارسال شود؟",
+      "fullName": "نام و نام خانوادگی",
+      "fullNamePlaceholder": "نام کامل شما",
+      "phone": "شماره تلفن",
+      "phonePlaceholder": "مثال: ۰۹۱۲۳۴۵۶۷۸۹",
+      "province": "استان",
+      "provincePlaceholder": "استان خود را وارد کنید",
+      "city": "شهر",
+      "cityPlaceholder": "شهر خود را وارد کنید",
+      "address": "آدرس کامل",
+      "addressPlaceholder": "خیابان، پلاک، طبقه، واحد...",
+      "postalCode": "کد پستی (اختیاری)",
+      "postalCodePlaceholder": "کد پستی ۱۰ رقمی",
+      "mapTitle": "موقعیت دقیق (اختیاری)",
+      "mapSubtitle": "روی نقشه کلیک کنید تا پین بگذارید. برای تنظیم دقیق‌تر آن را بکشید.",
+      "mapHint": "روی نقشه کلیک کنید تا موقعیت تحویل را مشخص کنید.",
+      "locationDetected": "آدرس تشخیص‌داده‌شده:",
+      "pinLocation": "مشخص کردن روی نقشه",
+      "hideMap": "پنهان کردن نقشه",
+      "removePin": "حذف پین",
+      "next": "ادامه به زمان ارسال"
+    },
+    "delivery": {
+      "title": "زمان تحویل",
+      "subtitle": "چه زمانی می‌خواهید سفارش خود را دریافت کنید؟",
+      "selectDate": "انتخاب تاریخ",
+      "selectTime": "انتخاب بازه زمانی",
+      "today": "امروز",
+      "tomorrow": "فردا",
+      "dayAfterTomorrow": "پس‌فردا",
+      "morning": "صبح",
+      "morningTime": "۸:۰۰ – ۱۲:۰۰",
+      "afternoon": "ظهر",
+      "afternoonTime": "۱۲:۰۰ – ۱۶:۰۰",
+      "evening": "عصر",
+      "eveningTime": "۱۶:۰۰ – ۲۰:۰۰",
+      "slotRequired": "لطفاً یک بازه زمانی انتخاب کنید",
+      "back": "بازگشت",
+      "next": "ادامه به پرداخت"
+    },
+    "payment": {
+      "title": "پرداخت",
+      "subtitle": "سفارش خود را بررسی و پرداخت را تکمیل کنید",
+      "orderSummary": "خلاصه سفارش",
+      "deliveryInfo": "زمان تحویل",
+      "addressInfo": "آدرس تحویل",
+      "total": "جمع کل",
+      "pay": "پرداخت",
+      "back": "بازگشت",
+      "locationPinned": "موقعیت روی نقشه مشخص شده"
+    }
   },
   "auth": {
     "title": "خوش آمدید",

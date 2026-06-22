@@ -1,5 +1,5 @@
 {
-  "name": "hiva",
+  "name": "HIVA",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -24,10 +24,12 @@
   "dependencies": {
     "@base-ui/react": "^1.5.0",
     "@hookform/resolvers": "^5.4.0",
+    "@types/leaflet": "^1.9.21",
     "axios": "^1.17.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.40.0",
+    "leaflet": "^1.9.4",
     "lucide-react": "^1.17.0",
     "motion": "^12.40.0",
     "next": "16.2.7",
@@ -37,6 +39,7 @@
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-hook-form": "^7.78.0",
+    "react-leaflet": "^5.0.0",
     "root": "github:tanstack/react-query",
     "shadcn": "^4.10.0",
     "tailwind-merge": "^3.6.0",

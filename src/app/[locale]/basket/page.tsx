@@ -6,11 +6,13 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useCartStore } from "@/store/cart";
 import { formatPrice } from "@/lib/currency";
+import { useRouter } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 
 export default function BasketPage() {
   const t = useTranslations("basket");
   const locale = useLocale() as Locale;
+  const router = useRouter();
   const items = useCartStore((s) => s.items);
   const increment = useCartStore((s) => s.increment);
   const decrement = useCartStore((s) => s.decrement);
@@ -103,7 +105,11 @@ export default function BasketPage() {
               {formatPrice(total, locale)}
             </span>
           </div>
-          <Button className="w-full" size="lg">
+          <Button
+            className="w-full"
+            size="lg"
+            onClick={() => router.push("/checkout")}
+          >
             {t("checkout")}
           </Button>
         </section>

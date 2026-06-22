@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { AuthMethod } from "@/components/auth/sign-in-form";
+import type { AuthMethod } from "@/types";
 
 interface AuthFlowStore {
   credential: string;

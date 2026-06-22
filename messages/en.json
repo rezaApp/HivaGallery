@@ -1,7 +1,7 @@
 {
   "home": {
     "carousel": {
-      "slide1Title": "Welcome to Hiva",
+      "slide1Title": "Welcome to HIVA",
       "slide1Subtitle": "Building the future of digital experiences",
       "slide2Title": "Our Mission",
       "slide2Subtitle": "Innovative solutions that connect people and simplify complex challenges",
@@ -10,7 +10,7 @@
       "slide4Title": "Our Vision",
       "slide4Subtitle": "A world where technology empowers everyone to achieve more",
       "slide5Title": "Join the Journey",
-      "slide5Subtitle": "Discover what's next for Hiva",
+      "slide5Subtitle": "Discover what's next for HIVA",
       "slide6Title": "Timeless Craftsmanship",
       "slide6Subtitle": "Quality that stands the test of time",
       "prev": "Previous slide",
@@ -25,7 +25,9 @@
     "contact": "Contact",
     "signIn": "Sign In",
     "basket": "Basket",
-    "toggleMenu": "Show or hide menu"
+    "toggleMenu": "Show or hide menu",
+    "shopByCategory": "Shop by Category",
+    "viewAll": "View all products"
   },
   "language": {
     "label": "Language",
@@ -34,7 +36,7 @@
     "ar": "Arabic"
   },
   "about": {
-    "title": "About Hiva",
+    "title": "About HIVA",
     "subtitle": "Building the future of digital experiences",
     "missionTitle": "Our Mission",
     "missionText": "We are dedicated to creating innovative solutions that connect people and simplify complex challenges.",
@@ -89,6 +91,64 @@
     "clearFilters": "Clear filters",
     "showing": "Showing {from}–{to} of {total} products",
     "noResults": "No products match your filters.",
+    "selectCategoryHint": "Select a category to explore subcategories",
+    "detail": {
+      "descriptionTitle": "About this Product",
+      "specsTitle": "Technical Specifications",
+      "reviewsTitle": "Customer Reviews",
+      "relatedTitle": "Related Products",
+      "quantity": "Quantity",
+      "inStock": "In Stock",
+      "addToBasket": "Add to Basket",
+      "verifiedPurchase": "Verified Purchase",
+      "noReviews": "No reviews yet",
+      "ratingLabel": "{rating} out of 5",
+      "reviewsCount": "{count} reviews",
+      "notFound": "Product not found",
+      "backToProducts": "Back to Products",
+      "specKeys": {
+        "noiseCancelling": "Noise Cancellation",
+        "driver": "Driver Size",
+        "frequency": "Frequency Response",
+        "battery": "Battery Life",
+        "connectivity": "Connectivity",
+        "weight": "Weight",
+        "display": "Display",
+        "waterResistance": "Water Resistance",
+        "gps": "GPS",
+        "strap": "Strap Material",
+        "material": "Material",
+        "sole": "Sole Type",
+        "closure": "Closure",
+        "drop": "Drop Height",
+        "thickness": "Thickness",
+        "dimensions": "Dimensions",
+        "texture": "Surface Texture",
+        "capacity": "Capacity",
+        "grinder": "Built-in Grinder",
+        "programmable": "Programmable Timer",
+        "carafeType": "Carafe Type",
+        "power": "Power",
+        "slots": "Card Slots",
+        "protection": "RFID Protection",
+        "lens": "Lens Type",
+        "frame": "Frame Material",
+        "uv": "UV Protection",
+        "style": "Style",
+        "insulation": "Insulation Type",
+        "cold": "Cold Retention",
+        "hot": "Heat Retention",
+        "volume": "Volume",
+        "technology": "Light Technology",
+        "brightness": "Brightness",
+        "colorTemp": "Color Temperature",
+        "usbPort": "USB Charging Port",
+        "control": "Control Method",
+        "layout": "Keyboard Layout",
+        "switches": "Switch Type",
+        "backlighting": "Backlighting"
+      }
+    },
     "pagination": {
       "previous": "Previous",
       "next": "Next",
@@ -103,6 +163,31 @@
       "kitchen": "Kitchen",
       "accessories": "Accessories",
       "homeOffice": "Home & Office"
+    },
+    "subcategories": {
+      "electronics": {
+        "audio": "Audio & Headphones",
+        "wearables": "Smart Watches",
+        "peripherals": "Keyboards & Peripherals"
+      },
+      "sports": {
+        "running": "Running & Walking",
+        "yoga": "Yoga & Pilates",
+        "hydration": "Hydration"
+      },
+      "kitchen": {
+        "coffee": "Coffee & Beverages",
+        "appliances": "Kitchen Appliances"
+      },
+      "accessories": {
+        "wallets": "Wallets & Cards",
+        "eyewear": "Eyewear",
+        "watches": "Watches"
+      },
+      "homeOffice": {
+        "lighting": "Lighting",
+        "desk": "Desk & Peripherals"
+      }
     },
     "items": {
       "1": {
@@ -150,7 +235,70 @@
   "validation": {
     "required": "This field is required.",
     "invalidEmail": "Please enter a valid email address.",
-    "invalidMobile": "Please enter a valid mobile number."
+    "invalidMobile": "Please enter a valid mobile number.",
+    "invalidPhone": "Please enter a valid phone number.",
+    "addressTooShort": "Please enter a more complete address."
+  },
+  "checkout": {
+    "title": "Complete Your Order",
+    "steps": {
+      "address": "Address",
+      "delivery": "Delivery",
+      "payment": "Payment"
+    },
+    "address": {
+      "title": "Delivery Address",
+      "subtitle": "Where should we deliver your order?",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Your full name",
+      "phone": "Phone Number",
+      "phonePlaceholder": "e.g. 09123456789",
+      "province": "Province",
+      "provincePlaceholder": "Your province",
+      "city": "City",
+      "cityPlaceholder": "Your city",
+      "address": "Street Address",
+      "addressPlaceholder": "Street, building number, floor, unit...",
+      "postalCode": "Postal Code (optional)",
+      "postalCodePlaceholder": "10-digit postal code",
+      "mapTitle": "Exact Location (optional)",
+      "mapSubtitle": "Click anywhere on the map to drop a pin. You can drag it to fine-tune.",
+      "mapHint": "Click anywhere on the map to drop a pin. You can drag it to adjust.",
+      "locationDetected": "Detected address:",
+      "pinLocation": "Pin on map",
+      "hideMap": "Hide map",
+      "removePin": "Remove pin",
+      "next": "Continue to Delivery"
+    },
+    "delivery": {
+      "title": "Delivery Time",
+      "subtitle": "When would you like to receive your order?",
+      "selectDate": "Select a Date",
+      "selectTime": "Select a Time Slot",
+      "today": "Today",
+      "tomorrow": "Tomorrow",
+      "dayAfterTomorrow": "Day After",
+      "morning": "Morning",
+      "morningTime": "8:00 – 12:00",
+      "afternoon": "Afternoon",
+      "afternoonTime": "12:00 – 16:00",
+      "evening": "Evening",
+      "eveningTime": "16:00 – 20:00",
+      "slotRequired": "Please select a time slot",
+      "back": "Back",
+      "next": "Continue to Payment"
+    },
+    "payment": {
+      "title": "Payment",
+      "subtitle": "Review your order and complete payment",
+      "orderSummary": "Order Summary",
+      "deliveryInfo": "Delivery Time",
+      "addressInfo": "Delivery Address",
+      "total": "Total",
+      "pay": "Pay Now",
+      "back": "Back",
+      "locationPinned": "Location pinned on map"
+    }
   },
   "auth": {
     "title": "Welcome back",

@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { SignInForm, type AuthMethod } from "@/components/auth/sign-in-form";
+import { SignInForm } from "@/components/auth/sign-in-form";
+import type { AuthMethod } from "@/types";
 import { OtpForm } from "@/components/auth/otp-form";
 
 type Step = "credential" | "otp";

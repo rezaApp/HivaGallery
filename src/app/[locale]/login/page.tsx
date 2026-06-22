@@ -1,7 +1,8 @@
 "use client";
 
 import { useRouter, Link } from "@/i18n/navigation";
-import { SignInForm, type AuthMethod } from "@/components/auth/sign-in-form";
+import { SignInForm } from "@/components/auth/sign-in-form";
+import type { AuthMethod } from "@/types";
 import { Card } from "@/components/ui/card";
 import { useAuthFlowStore } from "@/store/auth";
 
@@ -22,7 +23,7 @@ export default function LoginPage() {
             href="/"
             className="text-foreground inline-block text-2xl font-bold tracking-tight"
           >
-            Hiva
+            HIVA
           </Link>
         </div>
 

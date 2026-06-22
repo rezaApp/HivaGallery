@@ -14,8 +14,7 @@ import {
   mobileSchema,
   type CredentialFormValues,
 } from "@/lib/validations/auth";
-
-export type AuthMethod = "mobile" | "email";
+import type { AuthMethod } from "@/types";
 
 interface Props {
   onSubmit: (credential: string, method: AuthMethod) => void;

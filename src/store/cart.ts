@@ -1,17 +1,10 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
-
-export interface CartItem {
-  id: string;
-  name: string;
-  description: string;
-  priceUsd: number;
-  quantity: number;
-}
+import type { CartItemDto } from "@/types";
 
 interface CartStore {
-  items: CartItem[];
-  addItem: (product: Omit<CartItem, "quantity">) => void;
+  items: CartItemDto[];
+  addItem: (product: Omit<CartItemDto, "quantity">) => void;
   increment: (id: string) => void;
   decrement: (id: string) => void;
   removeItem: (id: string) => void;

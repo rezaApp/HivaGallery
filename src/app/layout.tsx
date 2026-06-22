@@ -37,8 +37,8 @@ const yekanBakh = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Hiva",
-  description: "Hiva application",
+  title: "HIVA",
+  description: "HIVA application",
 };
 
 const RTL_LOCALES = new Set(["fa", "ar"]);
