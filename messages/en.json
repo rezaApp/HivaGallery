@@ -1,4 +1,34 @@
 {
+  "seo": {
+    "home": {
+      "title": "HIVA – Innovative Products & Digital Experiences",
+      "description": "Discover HIVA's curated collection of electronics, sports gear, kitchen essentials, accessories, and home office products."
+    },
+    "about": {
+      "title": "About HIVA – Our Mission & Vision",
+      "description": "Learn about HIVA's mission to deliver innovative solutions that connect people and simplify complex challenges."
+    },
+    "contact": {
+      "title": "Contact Us – HIVA",
+      "description": "Get in touch with the HIVA team. We're here to help with any questions or feedback."
+    },
+    "products": {
+      "title": "Shop Products – HIVA",
+      "description": "Browse HIVA's full catalog of premium electronics, sports equipment, kitchen appliances, accessories, and home office products."
+    },
+    "basket": {
+      "title": "Your Basket – HIVA",
+      "description": "Review and manage the items in your HIVA shopping basket."
+    },
+    "checkout": {
+      "title": "Checkout – HIVA",
+      "description": "Complete your HIVA order securely."
+    },
+    "login": {
+      "title": "Sign In – HIVA",
+      "description": "Sign in to your HIVA account."
+    }
+  },
   "home": {
     "carousel": {
       "slide1Title": "Welcome to HIVA",

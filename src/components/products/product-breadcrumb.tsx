@@ -30,7 +30,10 @@ export function ProductBreadcrumb({
   return (
     <nav
       aria-label="breadcrumb"
-      className={cn("flex flex-wrap items-center gap-1", className)}
+      className={cn(
+        "bg-background/10 border-border/10 flex flex-wrap items-center gap-1 rounded-xl border px-4 py-2 backdrop-blur-lg",
+        className
+      )}
     >
       {all.map((item, idx) => {
         const isLast = idx === all.length - 1;

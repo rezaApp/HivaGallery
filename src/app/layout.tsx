@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { getLocale } from "next-intl/server";
 import "./globals.css";
+import { JsonLd } from "@/components/json-ld";
+import { SITE_URL, SITE_NAME } from "@/lib/seo";
 
 const geist = localFont({
   src: [
@@ -37,11 +39,59 @@ const yekanBakh = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "HIVA",
-  description: "HIVA application",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    template: `%s | ${SITE_NAME}`,
+    default: SITE_NAME,
+  },
+  description:
+    "Discover HIVA's curated collection of premium products — electronics, sports, kitchen, accessories, and home office.",
+  robots: { index: true, follow: true },
+  openGraph: {
+    siteName: SITE_NAME,
+    type: "website",
+    images: [
+      {
+        url: "/images/og-default.jpg",
+        width: 1200,
+        height: 630,
+        alt: SITE_NAME,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@hiva_app",
+  },
 };
 
 const RTL_LOCALES = new Set(["fa", "ar"]);
+
+const ORGANIZATION_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE_NAME,
+  url: SITE_URL,
+  logo: {
+    "@type": "ImageObject",
+    url: `${SITE_URL}/images/logo/hivaLogo.png`,
+  },
+};
+
+const WEBSITE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  url: SITE_URL,
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${SITE_URL}/products?q={search_term_string}`,
+    },
+    "query-input": "required name=search_term_string",
+  },
+};
 
 export default async function RootLayout({
   children,
@@ -62,6 +112,7 @@ export default async function RootLayout({
         className={`flex min-h-full flex-col${isRtl ? "font-arabic" : ""}`}
         suppressHydrationWarning
       >
+        <JsonLd data={[ORGANIZATION_SCHEMA, WEBSITE_SCHEMA]} />
         <div
           style={{
             position: "fixed",

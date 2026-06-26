@@ -135,7 +135,7 @@ export function AddressForm({ onSubmit, defaultValues }: AddressFormProps) {
             rows={3}
             aria-invalid={!!errors.address}
             className={cn(
-              "border-input bg-background placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 w-full resize-none rounded-lg border px-3 py-2 text-sm shadow-sm transition-colors outline-none focus-visible:ring-3 aria-invalid:ring-3"
+              "border-input bg-background/10 placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 w-full resize-none rounded-lg border px-3 py-2 text-sm shadow-sm backdrop-blur-lg transition-colors outline-none focus-visible:ring-3 aria-invalid:ring-3"
             )}
             {...register("address")}
           />
@@ -150,7 +150,7 @@ export function AddressForm({ onSubmit, defaultValues }: AddressFormProps) {
         </Field>
 
         {/* Map location picker */}
-        <div className="border-border rounded-xl border">
+        <div className="bg-background/10 border-border/10 rounded-xl border backdrop-blur-sm">
           <div className="flex items-center justify-between p-4">
             <div className="flex items-center gap-2">
               <MapPin

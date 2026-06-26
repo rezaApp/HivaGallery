@@ -343,7 +343,7 @@ export function Header() {
               transition={{ duration: 0.15, ease: "easeOut" }}
               onMouseEnter={openMega}
               onMouseLeave={closeMega}
-              className="bg-background/98 border-border/40 mx-auto mt-2 hidden max-w-7xl overflow-hidden rounded-2xl border shadow-xl backdrop-blur-lg md:block"
+              className="bg-background/10 border-border/10 mx-auto mt-2 hidden max-w-7xl overflow-hidden rounded-2xl border shadow-xl backdrop-blur-lg md:block"
             >
               <div className="flex min-h-64">
                 {/* Level 1 — Category list */}
