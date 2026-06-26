@@ -335,8 +335,7 @@
     "subtitle": "برای ادامه وارد شوید یا حساب کاربری بسازید",
     "mobile": "موبایل",
     "email": "ایمیل",
-    "mobilePlaceholder": "شماره موبایل خود را وارد کنید",
-    "emailPlaceholder": "آدرس ایمیل خود را وارد کنید",
+    "credentialPlaceholder": "ایمیل یا شماره موبایل",
     "continue": "ادامه",
     "otp": {
       "title": "کد را وارد کنید",

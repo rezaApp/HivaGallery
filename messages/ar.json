@@ -335,8 +335,7 @@
     "subtitle": "سجّل دخولك أو أنشئ حساباً للمتابعة",
     "mobile": "الجوال",
     "email": "البريد الإلكتروني",
-    "mobilePlaceholder": "أدخل رقم جوالك",
-    "emailPlaceholder": "أدخل بريدك الإلكتروني",
+    "credentialPlaceholder": "البريد الإلكتروني أو رقم الجوال",
     "continue": "متابعة",
     "otp": {
       "title": "أدخل الرمز",
