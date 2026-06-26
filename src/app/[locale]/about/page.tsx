@@ -23,7 +23,7 @@ export default function AboutPage() {
       </section>
 
       <section className="grid gap-8 md:grid-cols-2">
-        <Card className="space-y-3 p-8">
+        <Card className="bg-background/10 border-border/10 space-y-3 p-8 backdrop-blur-sm">
           <div className="bg-primary/10 flex size-10 items-center justify-center rounded-lg">
             <Target className="text-primary size-5" />
           </div>
@@ -32,7 +32,7 @@ export default function AboutPage() {
           </h2>
           <p className="text-muted-foreground">{t("missionText")}</p>
         </Card>
-        <Card className="space-y-3 p-8">
+        <Card className="bg-background/10 border-border/10 space-y-3 p-8 backdrop-blur-sm">
           <div className="bg-primary/10 flex size-10 items-center justify-center rounded-lg">
             <Eye className="text-primary size-5" />
           </div>
@@ -49,7 +49,10 @@ export default function AboutPage() {
         </h2>
         <div className="grid gap-6 sm:grid-cols-3">
           {values.map(({ Icon, title, text }) => (
-            <div key={title} className="space-y-3 p-6 text-center">
+            <div
+              key={title}
+              className="bg-background/10 border-border/10 space-y-3 rounded-xl border p-6 text-center backdrop-blur-sm"
+            >
               <div className="bg-muted mx-auto flex size-12 items-center justify-center rounded-full">
                 <Icon className="size-5" />
               </div>

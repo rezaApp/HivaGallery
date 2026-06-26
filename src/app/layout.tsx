@@ -62,6 +62,18 @@ export default async function RootLayout({
         className={`flex min-h-full flex-col${isRtl ? "font-arabic" : ""}`}
         suppressHydrationWarning
       >
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: -1,
+            backgroundImage: "url('/images/bkg.PNG')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            opacity: 0.8,
+          }}
+        />
         {children}
       </body>
     </html>

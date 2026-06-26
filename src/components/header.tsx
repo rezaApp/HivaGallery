@@ -205,14 +205,14 @@ export function Header() {
         )}
       >
         {/* ── Header bar ── */}
-        <div className="bg-background/30 border-border/40 mx-auto flex h-16 max-w-7xl items-center justify-between rounded-2xl border ps-12 pe-4 shadow-lg backdrop-blur-lg sm:ps-14 sm:pe-6 lg:pe-8">
+        <div className="bg-background/10 border-border/10 opacity:0.2 mx-auto flex h-16 max-w-7xl items-center justify-between rounded-2xl border ps-12 pe-4 shadow-lg backdrop-blur-sm sm:ps-14 sm:pe-6 lg:pe-8">
           {/* Brand */}
           <Link
             href="/"
             className="text-foreground flex items-center gap-2 text-xl font-bold tracking-tight"
           >
             <Image
-              src="/images/logo/hivaLogo.jpg"
+              src="/images/logo/hivaLogo.png"
               alt="HIVA"
               width={32}
               height={32}
