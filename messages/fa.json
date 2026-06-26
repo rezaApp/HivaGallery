@@ -337,6 +337,8 @@
     "email": "ایمیل",
     "credentialPlaceholder": "ایمیل یا شماره موبایل",
     "continue": "ادامه",
+    "orContinueWith": "یا ادامه با",
+    "signInWithGoogle": "ورود با گوگل",
     "otp": {
       "title": "کد را وارد کنید",
       "subtitle": "یک کد ۶ رقمی به {credential} ارسال شد",

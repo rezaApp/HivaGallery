@@ -337,6 +337,8 @@
     "email": "Email",
     "credentialPlaceholder": "Email or mobile number",
     "continue": "Continue",
+    "orContinueWith": "Or continue with",
+    "signInWithGoogle": "Sign in with Google",
     "otp": {
       "title": "Enter the code",
       "subtitle": "We sent a 6-digit code to {credential}",

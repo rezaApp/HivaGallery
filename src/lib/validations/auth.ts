@@ -8,12 +8,14 @@ export const credentialSchema = z.object({
     .string()
     .trim()
     .min(1, "required")
-    .refine(
-      (val) => EMAIL_RE.test(val) || MOBILE_RE.test(val),
-      (val) => ({
-        message: val.includes("@") ? "invalidEmail" : "invalidMobile",
-      })
-    ),
+    .superRefine((val, ctx) => {
+      if (!EMAIL_RE.test(val) && !MOBILE_RE.test(val)) {
+        ctx.addIssue({
+          code: "custom",
+          message: val.includes("@") ? "invalidEmail" : "invalidMobile",
+        });
+      }
+    }),
 });
 
 export type CredentialFormValues = z.infer<typeof credentialSchema>;
