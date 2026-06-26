@@ -61,7 +61,7 @@ export default async function ProductsPage() {
 
   return (
     <>
-      <JsonLd data={schema} />
+      <JsonLd id="json-ld-products" data={schema} />
       <ProductsView />
     </>
   );

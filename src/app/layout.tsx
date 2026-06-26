@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { getLocale } from "next-intl/server";
 import "./globals.css";
-import { JsonLd } from "@/components/json-ld";
 import { SITE_URL, SITE_NAME } from "@/lib/seo";
 
 const geist = localFont({
@@ -67,31 +66,32 @@ export const metadata: Metadata = {
 
 const RTL_LOCALES = new Set(["fa", "ar"]);
 
-const ORGANIZATION_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: SITE_NAME,
-  url: SITE_URL,
-  logo: {
-    "@type": "ImageObject",
-    url: `${SITE_URL}/images/logo/hivaLogo.png`,
-  },
-};
-
-const WEBSITE_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: SITE_NAME,
-  url: SITE_URL,
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: `${SITE_URL}/products?q={search_term_string}`,
+const GLOBAL_SCHEMA = JSON.stringify([
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: SITE_NAME,
+    url: SITE_URL,
+    logo: {
+      "@type": "ImageObject",
+      url: `${SITE_URL}/images/logo/hivaLogo.png`,
     },
-    "query-input": "required name=search_term_string",
   },
-};
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE_NAME,
+    url: SITE_URL,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE_URL}/products?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
+  },
+]);
 
 export default async function RootLayout({
   children,
@@ -108,11 +108,16 @@ export default async function RootLayout({
       className={`${geist.variable} ${yekanBakh.variable} h-full antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: GLOBAL_SCHEMA }}
+        />
+      </head>
       <body
         className={`flex min-h-full flex-col${isRtl ? "font-arabic" : ""}`}
         suppressHydrationWarning
       >
-        <JsonLd data={[ORGANIZATION_SCHEMA, WEBSITE_SCHEMA]} />
         <div
           style={{
             position: "fixed",

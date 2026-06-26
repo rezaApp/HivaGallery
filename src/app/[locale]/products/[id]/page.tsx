@@ -116,7 +116,10 @@ export default async function ProductDetailPage({
   return (
     <>
       {schema.length > 0 && (
-        <JsonLd data={schema as Record<string, unknown>[]} />
+        <JsonLd
+          id="json-ld-product"
+          data={schema as Record<string, unknown>[]}
+        />
       )}
       <ProductDetailView />
     </>

@@ -69,7 +69,7 @@ export default async function AboutPage() {
 
   return (
     <>
-      <JsonLd data={schema} />
+      <JsonLd id="json-ld-about" data={schema} />
       <main className="mx-auto w-full max-w-4xl space-y-20 px-6 py-16">
         <section className="space-y-4 text-center">
           <h1 className="text-foreground text-4xl font-bold tracking-tight sm:text-5xl">

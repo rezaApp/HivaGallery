@@ -61,7 +61,7 @@ export default async function ContactPage() {
 
   return (
     <>
-      <JsonLd data={schema} />
+      <JsonLd id="json-ld-contact" data={schema} />
       <ContactForm />
     </>
   );

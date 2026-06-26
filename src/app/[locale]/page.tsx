@@ -55,7 +55,7 @@ export default async function Home() {
 
   return (
     <>
-      <JsonLd data={schema} />
+      <JsonLd id="json-ld-home" data={schema} />
       <HeroCarousel />
       <main className="flex flex-1 flex-col items-center justify-center px-6 py-24 text-center">
         <h1 className="text-foreground text-4xl font-bold tracking-tight sm:text-5xl">
