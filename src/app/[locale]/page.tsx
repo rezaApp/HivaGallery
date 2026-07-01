@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, getLocale } from "next-intl/server";
 import { HeroCarousel } from "@/components/home/hero-carousel";
+import { getHeroSlides } from "@/components/home/hero-slides";
 import { JsonLd } from "@/components/json-ld";
 import {
   buildAlternates,
@@ -53,10 +54,12 @@ export default async function Home() {
     },
   };
 
+  const slides = getHeroSlides();
+
   return (
     <>
       <JsonLd id="json-ld-home" data={schema} />
-      <HeroCarousel />
+      <HeroCarousel slides={slides} />
       <main className="flex flex-1 flex-col items-center justify-center px-6 py-24 text-center">
         <h1 className="text-foreground text-4xl font-bold tracking-tight sm:text-5xl">
           {t("home")}

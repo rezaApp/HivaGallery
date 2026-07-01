@@ -6,60 +6,33 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import type { HeroSlide } from "./hero-slides";
 
 const AUTOPLAY_MS = 6000;
 
-const SLIDES = [
-  {
-    key: "slide1",
-    image: "/images/hero/slide-1.png",
-    portraitImage: "/images/hero/portrate/slide-1-portrait.jpg",
-  },
-  {
-    key: "slide2",
-    image: "/images/hero/slide-2.png",
-    portraitImage: "/images/hero/portrate/slide-2-portrait.jpg",
-  },
-  {
-    key: "slide3",
-    image: "/images/hero/slide-3.png",
-    portraitImage: "/images/hero/portrate/slide-3-portrait.jpg",
-  },
-  {
-    key: "slide4",
-    image: "/images/hero/slide-4.png",
-    portraitImage: "/images/hero/portrate/slide-4-portrait.jpg",
-  },
-  {
-    key: "slide5",
-    image: "/images/hero/slide-5.png",
-    portraitImage: "/images/hero/portrate/slide-5-portrait.jpg",
-  },
-  {
-    key: "slide6",
-    image: "/images/hero/slide-6.png",
-    portraitImage: "/images/hero/portrate/slide-6-portrait.jpg",
-  },
-] as const;
-
-export function HeroCarousel() {
+export function HeroCarousel({ slides }: { slides: readonly HeroSlide[] }) {
   const t = useTranslations("home.carousel");
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
 
-  const goTo = useCallback((i: number) => {
-    setIndex(((i % SLIDES.length) + SLIDES.length) % SLIDES.length);
-  }, []);
+  const goTo = useCallback(
+    (i: number) => {
+      setIndex(((i % slides.length) + slides.length) % slides.length);
+    },
+    [slides.length]
+  );
 
   useEffect(() => {
     if (paused) return;
     const id = setInterval(() => {
-      setIndex((i) => (i + 1) % SLIDES.length);
+      setIndex((i) => (i + 1) % slides.length);
     }, AUTOPLAY_MS);
     return () => clearInterval(id);
-  }, [paused]);
+  }, [paused, slides.length]);
 
-  const slide = SLIDES[index];
+  if (slides.length === 0) return null;
+
+  const slide = slides[Math.min(index, slides.length - 1)];
 
   return (
     <section
@@ -93,12 +66,12 @@ export function HeroCarousel() {
             sizes="100vw"
             className="hidden object-cover sm:block"
           />
-          <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-black/40" />
+          <div className="absolute inset-0 hidden bg-linear-to-t from-black/70 via-black/30 to-black/40 sm:block" />
           <div className="relative flex h-full flex-col items-start justify-center gap-3 px-4 ps-6 text-start sm:gap-4 sm:px-12 sm:ps-20">
-            <h2 className="text-2xl font-bold tracking-tight text-white drop-shadow-md sm:text-4xl md:text-5xl lg:text-6xl">
+            <h2 className="text-2xl font-bold tracking-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] sm:text-4xl sm:drop-shadow-md md:text-5xl lg:text-6xl">
               {t(`${slide.key}Title`)}
             </h2>
-            <p className="max-w-xs text-sm text-white/90 drop-shadow-md sm:max-w-xl sm:text-lg md:max-w-2xl md:text-xl">
+            <p className="max-w-xs text-sm text-white/90 drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] sm:max-w-xl sm:text-lg sm:drop-shadow-md md:max-w-2xl md:text-xl">
               {t(`${slide.key}Subtitle`)}
             </p>
           </div>
@@ -123,7 +96,7 @@ export function HeroCarousel() {
       </button>
 
       <div className="absolute inset-x-0 bottom-4 flex justify-center gap-2">
-        {SLIDES.map((s, i) => (
+        {slides.map((s, i) => (
           <button
             key={s.key}
             type="button"
