@@ -71,6 +71,8 @@ export default async function Home() {
     },
   };
 
+  const slides = getHeroSlides();
+
   return (
     <>
       <JsonLd id="json-ld-home" data={schema} />

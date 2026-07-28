@@ -119,11 +119,25 @@ export default async function RootLayout({
         suppressHydrationWarning
       >
         <div
+          className="hidden md:block"
           style={{
             position: "fixed",
             inset: 0,
             zIndex: -1,
             backgroundImage: "url('/images/bkg.PNG')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            opacity: 0.8,
+          }}
+        />
+        <div
+          className="block md:hidden"
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: -1,
+            backgroundImage: "url('/images/bkgMobile.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
