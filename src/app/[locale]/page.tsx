@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, getLocale } from "next-intl/server";
 import { HeroCarousel } from "@/components/home/hero-carousel";
+import { getHeroSlides } from "@/components/home/hero-slides";
 import { LandingSections } from "@/components/home/landing-sections";
 import { JsonLd } from "@/components/json-ld";
 import {
@@ -76,7 +77,7 @@ export default async function Home() {
   return (
     <>
       <JsonLd id="json-ld-home" data={schema} />
-      <HeroCarousel />
+      <HeroCarousel slides={slides} />
       <LandingSections locale={locale} />
     </>
   );
