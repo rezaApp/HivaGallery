@@ -542,9 +542,12 @@ export function FaqAndFooter({ locale }: { locale: string }) {
             {copy.faqText}
           </p>
         </div>
-        <div className="divide-border border-border mt-10 divide-y rounded-2xl border px-5 sm:px-7">
+        <div className="mt-10 space-y-3">
           {copy.questions.map(([question, answer]) => (
-            <details key={question} className="group py-5">
+            <details
+              key={question}
+              className="bg-background/10 border-border/10 group rounded-xl border p-5 backdrop-blur-sm sm:p-6"
+            >
               <summary className="text-foreground flex cursor-pointer list-none items-center justify-between gap-4 font-bold">
                 <span>{question}</span>
                 <span className="text-primary text-xl transition-transform group-open:rotate-45">
