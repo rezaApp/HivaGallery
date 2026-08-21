@@ -66,6 +66,7 @@
     "products": "Products",
     "contact": "Contact",
     "signIn": "Sign In",
+    "dashboard": "Dashboard",
     "basket": "Basket",
     "toggleMenu": "Show or hide menu",
     "shopByCategory": "Shop by Category",
@@ -310,7 +311,10 @@
       "pinLocation": "Pin on map",
       "hideMap": "Hide map",
       "removePin": "Remove pin",
-      "next": "Continue to Delivery"
+      "next": "Continue to Delivery",
+      "savedTitle": "Saved addresses",
+      "default": "default",
+      "orNew": "Or enter a new address"
     },
     "delivery": {
       "title": "Delivery Time",
@@ -339,7 +343,9 @@
       "total": "Total",
       "pay": "Pay Now",
       "back": "Back",
-      "locationPinned": "Location pinned on map"
+      "locationPinned": "Location pinned on map",
+      "editAddress": "Edit address",
+      "editDelivery": "Edit delivery time"
     }
   },
   "auth": {
@@ -358,5 +364,45 @@
       "resendIn": "Resend in {seconds}",
       "change": "Change number / email"
     }
+  },
+  "dashboard": {
+    "eyebrow": "Account",
+    "title": "Welcome, {name}",
+    "subtitle": "Manage your account information from here.",
+    "profileTitle": "Account information",
+    "name": "Name",
+    "mobile": "Mobile number",
+    "ordersTitle": "My orders",
+    "ordersEmpty": "You have not placed any orders yet."
+  },
+  "account": {
+    "account": "Account",
+    "profile": "Manage profile",
+    "orders": "My orders",
+    "addresses": "My addresses",
+    "recentlyViewed": "Recently viewed",
+    "dashboard": "Dashboard",
+    "signOut": "Sign out",
+    "profileIntro": "View your account information.",
+    "ordersIntro": "Your order history",
+    "addressesIntro": "Saved addresses for delivery",
+    "recentlyIntro": "Products you viewed recently",
+    "name": "Name",
+    "mobile": "Mobile number",
+    "processing": "Processing",
+    "delivered": "Delivered",
+    "orderDetails": "Order details",
+    "orderedItems": "Ordered items",
+    "quantity": "Quantity",
+    "orderTotal": "Order total",
+    "product": "Product {id}",
+    "newAddress": "New address",
+    "editAddress": "Edit address",
+    "saveAddress": "Save address",
+    "cancel": "Cancel",
+    "addAddress": "Add address",
+    "defaultAddress": "Default address",
+    "makeDefault": "Set as default",
+    "deleteAddress": "Delete address"
   }
 }

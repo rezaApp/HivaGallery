@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signIn } from "next-auth/react";
 import { Button } from "@/components/ui/button";
+import { LogIn } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import {
   credentialSchema,
@@ -101,7 +102,8 @@ export function SignInForm({ onSubmit }: Props) {
             </p>
           )}
         </div>
-        <Button type="submit" className="h-10 w-full">
+        <Button type="submit" className="h-10 w-full gap-2">
+          <LogIn className="size-4" />
           {t("continue")}
         </Button>
       </form>

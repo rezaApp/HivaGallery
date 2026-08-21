@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
+import { Minus, Plus, ShoppingBag, Trash2, CreditCard } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useCartStore } from "@/store/cart";
@@ -110,6 +110,7 @@ export default function BasketPage() {
             size="lg"
             onClick={() => router.push("/checkout")}
           >
+            <CreditCard className="size-4" />
             {t("checkout")}
           </Button>
         </section>

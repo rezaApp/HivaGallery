@@ -21,7 +21,7 @@ import { RelatedProducts } from "@/components/products/related-products";
 import { useCartStore } from "@/store/cart";
 import { useToastStore } from "@/store/toast";
 import { formatPrice } from "@/lib/currency";
-import { getProduct, getRelatedProducts } from "@/lib/product-data";
+import { getProduct, getRelatedProducts } from "@/lib/mock-products";
 import type { Locale } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 

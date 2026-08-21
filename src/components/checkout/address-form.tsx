@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
-import { MapPin, CheckCircle, X } from "lucide-react";
+import { MapPin, CheckCircle, X, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
@@ -25,9 +25,14 @@ const MapPicker = dynamic(() => import("./map-picker"), {
 interface AddressFormProps {
   onSubmit: (data: AddressFormValues) => void;
   defaultValues?: Partial<AddressFormValues>;
+  submitLabel?: string;
 }
 
-export function AddressForm({ onSubmit, defaultValues }: AddressFormProps) {
+export function AddressForm({
+  onSubmit,
+  defaultValues,
+  submitLabel,
+}: AddressFormProps) {
   const t = useTranslations("checkout.address");
   const tv = useTranslations("validation");
 
@@ -202,8 +207,9 @@ export function AddressForm({ onSubmit, defaultValues }: AddressFormProps) {
           )}
         </div>
 
-        <Button type="submit" className="h-10 w-full" size="lg">
-          {t("next")}
+        <Button type="submit" className="h-10 w-full gap-2" size="lg">
+          <Truck className="size-4" />
+          {submitLabel ?? t("next")}
         </Button>
       </form>
     </Card>

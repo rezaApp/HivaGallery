@@ -66,6 +66,7 @@
     "products": "محصولات",
     "contact": "تماس با ما",
     "signIn": "ورود",
+    "dashboard": "داشبورد",
     "basket": "سبد خرید",
     "toggleMenu": "نمایش یا مخفی کردن منو",
     "shopByCategory": "خرید بر اساس دسته‌بندی",
@@ -310,7 +311,10 @@
       "pinLocation": "مشخص کردن روی نقشه",
       "hideMap": "پنهان کردن نقشه",
       "removePin": "حذف پین",
-      "next": "ادامه به زمان ارسال"
+      "next": "ادامه به زمان ارسال",
+      "savedTitle": "آدرس‌های ذخیره‌شده",
+      "default": "پیش‌فرض",
+      "orNew": "یا یک آدرس جدید وارد کنید"
     },
     "delivery": {
       "title": "زمان تحویل",
@@ -339,7 +343,9 @@
       "total": "جمع کل",
       "pay": "پرداخت",
       "back": "بازگشت",
-      "locationPinned": "موقعیت روی نقشه مشخص شده"
+      "locationPinned": "موقعیت روی نقشه مشخص شده",
+      "editAddress": "ویرایش آدرس",
+      "editDelivery": "ویرایش زمان ارسال"
     }
   },
   "auth": {
@@ -358,5 +364,45 @@
       "resendIn": "ارسال مجدد در {seconds}",
       "change": "تغییر شماره / ایمیل"
     }
+  },
+  "dashboard": {
+    "eyebrow": "حساب کاربری",
+    "title": "سلام {name}، خوش آمدید",
+    "subtitle": "از اینجا می‌توانید اطلاعات حساب خود را مدیریت کنید.",
+    "profileTitle": "اطلاعات حساب",
+    "name": "نام",
+    "mobile": "شماره همراه",
+    "ordersTitle": "سفارش‌های من",
+    "ordersEmpty": "هنوز سفارشی ثبت نشده است."
+  },
+  "account": {
+    "account": "حساب کاربری",
+    "profile": "مدیریت پروفایل کاربری",
+    "orders": "سفارش‌های من",
+    "addresses": "آدرس‌های من",
+    "recentlyViewed": "آخرین محصولات بازدیدشده",
+    "dashboard": "داشبورد",
+    "signOut": "خروج از حساب کاربری",
+    "profileIntro": "اطلاعات حساب کاربری خود را مشاهده کنید.",
+    "ordersIntro": "سوابق سفارش‌های شما",
+    "addressesIntro": "آدرس‌های ذخیره‌شده برای ارسال سفارش‌ها",
+    "recentlyIntro": "محصولاتی که اخیراً مشاهده کرده‌اید",
+    "name": "نام",
+    "mobile": "شماره همراه",
+    "processing": "در حال پردازش",
+    "delivered": "تحویل‌شده",
+    "orderDetails": "جزئیات سفارش",
+    "orderedItems": "کالاهای سفارش",
+    "quantity": "تعداد",
+    "orderTotal": "مبلغ کل",
+    "product": "محصول {id}",
+    "newAddress": "آدرس جدید",
+    "editAddress": "ویرایش آدرس",
+    "saveAddress": "ذخیره آدرس",
+    "cancel": "انصراف",
+    "addAddress": "افزودن آدرس",
+    "defaultAddress": "آدرس پیش‌فرض",
+    "makeDefault": "انتخاب به‌عنوان پیش‌فرض",
+    "deleteAddress": "حذف آدرس"
   }
 }

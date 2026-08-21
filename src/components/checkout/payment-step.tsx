@@ -8,6 +8,7 @@ import {
   ShoppingBag,
   ArrowLeft,
   ArrowRight,
+  Pencil,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -21,12 +22,16 @@ interface PaymentStepProps {
   addressData: AddressFormValues;
   deliveryData: DeliveryDto;
   onBack: () => void;
+  onEditAddress: () => void;
+  onEditDelivery: () => void;
 }
 
 export function PaymentStep({
   addressData,
   deliveryData,
   onBack,
+  onEditAddress,
+  onEditDelivery,
 }: PaymentStepProps) {
   const t = useTranslations("checkout.payment");
   const td = useTranslations("checkout.delivery");
@@ -85,11 +90,23 @@ export function PaymentStep({
       </Card>
 
       <Card className="space-y-3 p-6">
-        <div className="flex items-center gap-3">
-          <div className="bg-primary/10 flex size-10 items-center justify-center rounded-full">
-            <MapPin className="text-primary size-5" />
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="bg-primary/10 flex size-10 items-center justify-center rounded-full">
+              <MapPin className="text-primary size-5" />
+            </div>
+            <h2 className="text-foreground font-semibold">
+              {t("addressInfo")}
+            </h2>
           </div>
-          <h2 className="text-foreground font-semibold">{t("addressInfo")}</h2>
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            onClick={onEditAddress}
+            aria-label={t("editAddress")}
+          >
+            <Pencil className="size-4" />
+          </Button>
         </div>
         <div className="space-y-1 text-sm">
           <p className="text-foreground font-medium">{addressData.fullName}</p>
@@ -117,11 +134,23 @@ export function PaymentStep({
       </Card>
 
       <Card className="space-y-3 p-6">
-        <div className="flex items-center gap-3">
-          <div className="bg-primary/10 flex size-10 items-center justify-center rounded-full">
-            <Clock className="text-primary size-5" />
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="bg-primary/10 flex size-10 items-center justify-center rounded-full">
+              <Clock className="text-primary size-5" />
+            </div>
+            <h2 className="text-foreground font-semibold">
+              {t("deliveryInfo")}
+            </h2>
           </div>
-          <h2 className="text-foreground font-semibold">{t("deliveryInfo")}</h2>
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            onClick={onEditDelivery}
+            aria-label={t("editDelivery")}
+          >
+            <Pencil className="size-4" />
+          </Button>
         </div>
         <p className="text-muted-foreground text-sm">
           {dateLabel[deliveryData.date]} — {slotLabel[deliveryData.timeSlot]}
@@ -129,7 +158,7 @@ export function PaymentStep({
       </Card>
 
       <div className="flex gap-3">
-        <Button variant="outline" onClick={onBack} className="gap-2">
+        <Button variant="outline" onClick={onBack} className="h-11 gap-2">
           <BackArrow className="size-4" />
           {t("back")}
         </Button>

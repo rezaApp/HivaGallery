@@ -8,7 +8,7 @@ import { useToastStore } from "@/store/toast";
 import { formatPrice } from "@/lib/currency";
 import { useLocale } from "next-intl";
 import type { Locale } from "@/i18n/routing";
-import type { ProductDetail } from "@/lib/product-data";
+import type { ProductDetail } from "@/lib/mock-products";
 
 interface RelatedProductsProps {
   products: ProductDetail[];

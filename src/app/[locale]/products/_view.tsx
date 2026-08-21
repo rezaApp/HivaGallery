@@ -21,72 +21,10 @@ import { AnimatePresence, motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/products/product-card";
 import { cn } from "@/lib/utils";
+import { PRODUCTS } from "@/lib/mock-products";
 import type { ProductCategory, ProductSortKey, ProductCardDto } from "@/types";
 
 const PAGE_SIZE = 6;
-
-const PRODUCT_DATA: {
-  id: string;
-  priceUsd: number;
-  categoryKey: string;
-  subcategoryKey: string;
-}[] = [
-  {
-    id: "1",
-    priceUsd: 59.99,
-    categoryKey: "electronics",
-    subcategoryKey: "audio",
-  },
-  {
-    id: "2",
-    priceUsd: 24.5,
-    categoryKey: "electronics",
-    subcategoryKey: "wearables",
-  },
-  {
-    id: "3",
-    priceUsd: 89.99,
-    categoryKey: "sports",
-    subcategoryKey: "running",
-  },
-  { id: "4", priceUsd: 35.0, categoryKey: "sports", subcategoryKey: "yoga" },
-  {
-    id: "5",
-    priceUsd: 149.99,
-    categoryKey: "kitchen",
-    subcategoryKey: "coffee",
-  },
-  {
-    id: "6",
-    priceUsd: 45.0,
-    categoryKey: "accessories",
-    subcategoryKey: "wallets",
-  },
-  {
-    id: "7",
-    priceUsd: 75.0,
-    categoryKey: "accessories",
-    subcategoryKey: "eyewear",
-  },
-  {
-    id: "8",
-    priceUsd: 22.0,
-    categoryKey: "sports",
-    subcategoryKey: "hydration",
-  },
-  {
-    id: "9",
-    priceUsd: 38.99,
-    categoryKey: "homeOffice",
-    subcategoryKey: "lighting",
-  },
-  {
-    id: "10",
-    priceUsd: 129.0,
-    categoryKey: "electronics",
-    subcategoryKey: "peripherals",
-  },
-];
 
 // Canonical ordered list keeps the sidebar order stable
 const CATEGORY_KEYS: ProductCategory[] = [
@@ -197,7 +135,7 @@ function ProductsContent() {
     },
   ];
 
-  const allProducts: ProductCardDto[] = PRODUCT_DATA.map((data) => ({
+  const allProducts: ProductCardDto[] = PRODUCTS.map((data) => ({
     id: data.id,
     priceUsd: data.priceUsd,
     categoryKey: data.categoryKey as ProductCategory,
@@ -278,7 +216,7 @@ function ProductsContent() {
           {t("title")}
         </h1>
         <p className="text-muted-foreground text-lg">
-          {t("subtitle", { count: PRODUCT_DATA.length })}
+          {t("subtitle", { count: PRODUCTS.length })}
         </p>
       </section>
 

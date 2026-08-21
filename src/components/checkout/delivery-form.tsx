@@ -2,7 +2,13 @@
 
 import { useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
-import { Calendar, Clock, ArrowLeft, ArrowRight } from "lucide-react";
+import {
+  Calendar,
+  Clock,
+  ArrowLeft,
+  ArrowRight,
+  CreditCard,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
@@ -134,11 +140,12 @@ export function DeliveryForm({
       </div>
 
       <div className="mt-6 flex gap-3">
-        <Button variant="outline" onClick={onBack} className="gap-2">
+        <Button variant="outline" onClick={onBack} className="h-10 gap-2">
           <BackArrow className="size-4" />
           {t("back")}
         </Button>
-        <Button onClick={handleSubmit} className="h-10 flex-1">
+        <Button onClick={handleSubmit} className="h-10 flex-1 gap-2">
+          <CreditCard className="size-4" />
           {t("next")}
         </Button>
       </div>

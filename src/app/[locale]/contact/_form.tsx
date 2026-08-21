@@ -92,7 +92,11 @@ export default function ContactForm() {
           />
         </Field>
 
-        <Button type="submit" className="h-10 w-full" disabled={isSubmitting}>
+        <Button
+          type="submit"
+          className="h-10 w-full gap-2"
+          disabled={isSubmitting}
+        >
           <Send className="size-4" />
           {t("send")}
         </Button>

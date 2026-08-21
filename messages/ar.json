@@ -66,6 +66,7 @@
     "products": "المنتجات",
     "contact": "اتصل بنا",
     "signIn": "تسجيل الدخول",
+    "dashboard": "لوحة التحكم",
     "basket": "السلة",
     "toggleMenu": "إظهار أو إخفاء القائمة",
     "shopByCategory": "تسوّق حسب الفئة",
@@ -310,7 +311,10 @@
       "pinLocation": "تحديد على الخريطة",
       "hideMap": "إخفاء الخريطة",
       "removePin": "إزالة الدبوس",
-      "next": "متابعة إلى موعد التسليم"
+      "next": "متابعة إلى موعد التسليم",
+      "savedTitle": "العناوين المحفوظة",
+      "default": "افتراضي",
+      "orNew": "أو أدخل عنواناً جديداً"
     },
     "delivery": {
       "title": "موعد التسليم",
@@ -339,7 +343,9 @@
       "total": "الإجمالي",
       "pay": "ادفع الآن",
       "back": "رجوع",
-      "locationPinned": "تم تحديد الموقع على الخريطة"
+      "locationPinned": "تم تحديد الموقع على الخريطة",
+      "editAddress": "تعديل العنوان",
+      "editDelivery": "تعديل وقت التوصيل"
     }
   },
   "auth": {
@@ -358,5 +364,45 @@
       "resendIn": "إعادة الإرسال خلال {seconds}",
       "change": "تغيير الرقم / البريد الإلكتروني"
     }
+  },
+  "dashboard": {
+    "eyebrow": "الحساب الشخصي",
+    "title": "مرحباً، {name}",
+    "subtitle": "يمكنك إدارة معلومات حسابك من هنا.",
+    "profileTitle": "معلومات الحساب",
+    "name": "الاسم",
+    "mobile": "رقم الجوال",
+    "ordersTitle": "طلباتي",
+    "ordersEmpty": "لم تقم بإنشاء أي طلبات بعد."
+  },
+  "account": {
+    "account": "الحساب الشخصي",
+    "profile": "إدارة الملف الشخصي",
+    "orders": "طلباتي",
+    "addresses": "عناويني",
+    "recentlyViewed": "المنتجات التي شاهدتها مؤخراً",
+    "dashboard": "لوحة التحكم",
+    "signOut": "تسجيل الخروج",
+    "profileIntro": "عرض معلومات حسابك.",
+    "ordersIntro": "سجل طلباتك",
+    "addressesIntro": "العناوين المحفوظة للتوصيل",
+    "recentlyIntro": "المنتجات التي شاهدتها مؤخراً",
+    "name": "الاسم",
+    "mobile": "رقم الجوال",
+    "processing": "قيد المعالجة",
+    "delivered": "تم التسليم",
+    "orderDetails": "تفاصيل الطلب",
+    "orderedItems": "منتجات الطلب",
+    "quantity": "الكمية",
+    "orderTotal": "إجمالي الطلب",
+    "product": "المنتج {id}",
+    "newAddress": "عنوان جديد",
+    "editAddress": "تعديل العنوان",
+    "saveAddress": "حفظ العنوان",
+    "cancel": "إلغاء",
+    "addAddress": "إضافة عنوان",
+    "defaultAddress": "العنوان الافتراضي",
+    "makeDefault": "تعيين كافتراضي",
+    "deleteAddress": "حذف العنوان"
   }
 }

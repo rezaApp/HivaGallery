@@ -40,7 +40,7 @@ export function ProductBreadcrumb({
         return (
           <span key={idx} className="flex items-center gap-1">
             {idx > 0 && (
-              <ChevronRight className="text-muted-foreground/50 size-3.5 shrink-0 rtl:rotate-180" />
+              <ChevronRight className="text-muted-foreground/70 size-3.5 shrink-0 rtl:rotate-180" />
             )}
             {item.href && !isLast ? (
               <Link

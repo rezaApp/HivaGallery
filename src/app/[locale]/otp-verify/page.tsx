@@ -4,11 +4,17 @@ import { useEffect } from "react";
 import { useRouter } from "@/i18n/navigation";
 import { OtpForm } from "@/components/auth/otp-form";
 import { Card } from "@/components/ui/card";
-import { useAuthFlowStore } from "@/store/auth";
+import {
+  MOCK_OTP,
+  MOCK_USER,
+  useAuthFlowStore,
+  useAuthStore,
+} from "@/store/auth";
 
 export default function OtpVerifyPage() {
   const router = useRouter();
   const { credential, method, reset } = useAuthFlowStore();
+  const setUser = useAuthStore((s) => s.setUser);
 
   useEffect(() => {
     if (!credential) {
@@ -22,8 +28,11 @@ export default function OtpVerifyPage() {
   }
 
   function handleVerify(otp: string) {
-    // TODO: call verify API with credential + otp
-    console.log("verify", { credential, otp });
+    if (credential === "09102930575" && otp === MOCK_OTP) {
+      setUser(MOCK_USER);
+      reset();
+      router.replace("/dashboard");
+    }
   }
 
   if (!credential) return null;

@@ -28,8 +28,10 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { useLocaleStore, type Locale } from "@/store/locale";
+import { useAuthStore } from "@/store/auth";
 import { useCartStore } from "@/store/cart";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { UserMenu } from "@/components/account/user-menu";
 import { cn } from "@/lib/utils";
 import type { ProductCategory } from "@/types";
 
@@ -97,6 +99,7 @@ export function Header() {
   const [mobileCatKey, setMobileCatKey] = useState<string | null>(null);
 
   const cartCount = useCartStore((s) => s.items.length);
+  const user = useAuthStore((s) => s.user);
   const isRtl = locale === "fa" || locale === "ar";
 
   useEffect(() => {
@@ -272,11 +275,15 @@ export function Header() {
 
           {/* Actions */}
           <div className="flex items-center gap-2">
-            <Link href="/login" className="hidden md:inline-flex">
-              <Button variant="outline" size="sm">
-                {t("signIn")}
-              </Button>
-            </Link>
+            {user ? (
+              <UserMenu />
+            ) : (
+              <Link href="/login" className="hidden md:inline-flex">
+                <Button variant="outline" size="sm">
+                  {t("signIn")}
+                </Button>
+              </Link>
+            )}
 
             <Link href="/basket" className="relative" aria-label={t("basket")}>
               <Button variant="ghost" size="icon">
@@ -582,11 +589,11 @@ export function Header() {
                   </Link>
 
                   <Link
-                    href="/login"
+                    href={user ? "/dashboard" : "/login"}
                     className="text-muted-foreground hover:bg-accent hover:text-foreground rounded-md px-3 py-2 text-sm font-medium transition-colors"
                     onClick={closeMobileAll}
                   >
-                    {t("signIn")}
+                    {user ? t("dashboard") : t("signIn")}
                   </Link>
                 </nav>
               </div>
