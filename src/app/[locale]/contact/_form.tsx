@@ -21,7 +21,7 @@ export default function ContactForm() {
     formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
-    defaultValues: { name: "", email: "", message: "" },
+    defaultValues: { name: "", phone: "", message: "" },
   });
 
   function onSubmit(values: ContactFormValues) {
@@ -62,18 +62,18 @@ export default function ContactForm() {
         </Field>
 
         <Field
-          label={t("email")}
+          label={t("phone")}
           error={
-            errors.email &&
-            tv(errors.email.message as "required" | "invalidEmail")
+            errors.phone &&
+            tv(errors.phone.message as "required" | "invalidPhone")
           }
         >
           <Input
-            type="email"
-            placeholder={t("emailPlaceholder")}
+            type="tel"
+            placeholder={t("phonePlaceholder")}
             dir="ltr"
-            aria-invalid={!!errors.email}
-            {...register("email")}
+            aria-invalid={!!errors.phone}
+            {...register("phone")}
           />
         </Field>
 

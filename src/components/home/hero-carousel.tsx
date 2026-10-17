@@ -1,115 +1,157 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { HeroSlide } from "./hero-slides";
 
-const AUTOPLAY_MS = 6000;
+const AUTOPLAY_MS = 3200;
 
 export function HeroCarousel({ slides }: { slides: readonly HeroSlide[] }) {
   const t = useTranslations("home.carousel");
-  const [index, setIndex] = useState(0);
+  const [position, setPosition] = useState(0);
   const [paused, setPaused] = useState(false);
-
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStart = useRef<number | null>(null);
+  const index = ((position % slides.length) + slides.length) % slides.length;
   const goTo = useCallback(
-    (i: number) => {
-      setIndex(((i % slides.length) + slides.length) % slides.length);
-    },
-    [slides.length]
+    (next: number) => setPosition((current) => current + (next - index)),
+    [index]
   );
-
   useEffect(() => {
-    if (paused) return;
-    const id = setInterval(() => {
-      setIndex((i) => (i + 1) % slides.length);
-    }, AUTOPLAY_MS);
-    return () => clearInterval(id);
-  }, [paused, slides.length]);
-
-  if (slides.length === 0) return null;
-
-  const slide = slides[Math.min(index, slides.length - 1)];
-
+    if (paused || isDragging) return;
+    const id = window.setInterval(
+      () => setPosition((current) => current + 1),
+      AUTOPLAY_MS
+    );
+    return () => window.clearInterval(id);
+  }, [isDragging, paused, slides.length]);
+  if (!slides.length) return null;
+  const active = slides[index];
   return (
     <section
-      className="relative -mt-20 h-[calc(60vh+5rem)] min-h-120 w-full overflow-hidden sm:-mt-24 sm:h-[calc(60vh+6rem)]"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+      className="hero-cylinder relative -mt-20 h-[calc(72vh+5rem)] min-h-155 w-full overflow-hidden sm:-mt-24 sm:h-[calc(73vh+6rem)]"
       aria-roledescription="carousel"
+      aria-label={t(`${active.key}Title`)}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => {
+        setPaused(false);
+        setIsDragging(false);
+      }}
+      onPointerDown={(event) => {
+        dragStart.current = event.clientX;
+        setIsDragging(true);
+        event.currentTarget.setPointerCapture(event.pointerId);
+      }}
+      onPointerUp={(event) => {
+        if (
+          dragStart.current !== null &&
+          Math.abs(event.clientX - dragStart.current) > 45
+        )
+          goTo(index + (event.clientX < dragStart.current ? 1 : -1));
+        dragStart.current = null;
+        setIsDragging(false);
+      }}
     >
-      <AnimatePresence initial={false} mode="wait">
-        <motion.div
-          key={slide.key}
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 1.05 }}
-          transition={{ duration: 0.7, ease: "easeInOut" }}
-          className="absolute inset-0"
-        >
-          <Image
-            src={slide.portraitImage}
-            alt={t(`${slide.key}Title`)}
-            fill
-            preload={index === 0}
-            sizes="100vw"
-            className="object-cover sm:hidden"
-          />
-          <Image
-            src={slide.image}
-            alt={t(`${slide.key}Title`)}
-            fill
-            preload={index === 0}
-            sizes="100vw"
-            className="hidden object-cover sm:block"
-          />
-          <div className="absolute inset-0 hidden bg-linear-to-t from-black/70 via-black/30 to-black/40 sm:block" />
-          <div className="relative flex h-full flex-col items-start justify-center gap-3 px-4 ps-6 text-start sm:gap-4 sm:px-12 sm:ps-20">
-            <h2 className="text-2xl font-bold tracking-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] sm:text-4xl sm:drop-shadow-md md:text-5xl lg:text-6xl">
-              {t(`${slide.key}Title`)}
-            </h2>
-            <p className="max-w-xs text-sm text-white/90 drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] sm:max-w-xl sm:text-lg sm:drop-shadow-md md:max-w-2xl md:text-xl">
-              {t(`${slide.key}Subtitle`)}
-            </p>
-          </div>
-        </motion.div>
-      </AnimatePresence>
-
-      <button
-        type="button"
-        onClick={() => goTo(index - 1)}
-        aria-label={t("prev")}
-        className="bg-background/50 text-foreground hover:bg-background/70 absolute inset-s-2 top-1/2 flex size-8 -translate-y-1/2 items-center justify-center rounded-full backdrop-blur-md transition-colors sm:inset-s-4 sm:size-10"
+      <div className="hero-cylinder__glow hero-cylinder__glow--one" />
+      <div className="hero-cylinder__glow hero-cylinder__glow--two" />
+      <div className="hero-cylinder__gallery-light" aria-hidden="true" />
+      <div
+        className="hero-cylinder__scene"
+        style={{ transform: "rotateX(-3deg) scale(0.88)" }}
       >
-        <ChevronLeft className="size-4 sm:size-5 rtl:rotate-180" />
-      </button>
-      <button
-        type="button"
-        onClick={() => goTo(index + 1)}
-        aria-label={t("next")}
-        className="bg-background/50 text-foreground hover:bg-background/70 absolute inset-e-2 top-1/2 flex size-8 -translate-y-1/2 items-center justify-center rounded-full backdrop-blur-md transition-colors sm:inset-e-4 sm:size-10"
-      >
-        <ChevronRight className="size-4 sm:size-5 rtl:rotate-180" />
-      </button>
-
-      <div className="absolute inset-x-0 bottom-4 flex justify-center gap-2">
-        {slides.map((s, i) => (
-          <button
-            key={s.key}
-            type="button"
-            onClick={() => goTo(i)}
-            aria-label={t("goToSlide", { number: i + 1 })}
-            aria-current={i === index}
-            className={cn(
-              "h-2 rounded-full transition-all",
-              i === index ? "w-6 bg-white" : "w-2 bg-white/40"
-            )}
-          />
-        ))}
+        {[-2, -1, 0, 1, 2].map((offset) => {
+          const slideIndex = (index + offset + slides.length) % slides.length;
+          const slide = slides[slideIndex];
+          return (
+            <button
+              key={slide.key}
+              type="button"
+              aria-label={t("goToSlide", { number: slideIndex + 1 })}
+              aria-current={offset === 0}
+              className={cn(
+                "hero-cylinder__card",
+                offset === 0 && "hero-cylinder__card--active",
+                Math.abs(offset) === 2 && "hero-cylinder__card--edge"
+              )}
+              style={{
+                transform: `rotateY(${offset * 26}deg) translateZ(clamp(330px, 38vw, 480px))`,
+              }}
+              onClick={() => goTo(slideIndex)}
+            >
+              <Image
+                src={slide.portraitImage}
+                alt={t(`${slide.key}Title`)}
+                fill
+                sizes="180px"
+                priority={offset <= 0}
+                className="object-cover"
+              />
+              <span className="hero-cylinder__card-shade" />
+            </button>
+          );
+        })}
       </div>
+      <div className="hero-cylinder__content pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center px-8 text-center">
+        <span className="text-primary-foreground/70 mb-5 text-[10px] font-semibold tracking-[0.42em] uppercase">
+          HIVA / {String(index + 1).padStart(2, "0")}
+        </span>
+        <h1 className="text-primary-foreground max-w-2xl text-3xl font-semibold tracking-tight drop-shadow-2xl sm:text-5xl md:text-6xl">
+          {t(`${active.key}Title`)}
+        </h1>
+        <p className="text-primary-foreground/75 mt-4 max-w-lg text-sm leading-7 sm:text-base">
+          {t(`${active.key}Subtitle`)}
+        </p>
+      </div>
+      <div className="absolute inset-x-0 bottom-8 z-20 flex items-center justify-center gap-3">
+        <button
+          onPointerDown={(event) => event.stopPropagation()}
+          type="button"
+          onClick={() => goTo(index - 1)}
+          aria-label={t("prev")}
+          className="hero-cylinder__control"
+        >
+          <ChevronLeft className="size-4 rtl:rotate-180" />
+        </button>
+        <button
+          onPointerDown={(event) => event.stopPropagation()}
+          type="button"
+          onClick={() => setPaused((value) => !value)}
+          aria-label={paused ? "Play slideshow" : "Pause slideshow"}
+          className="hero-cylinder__control"
+        >
+          {paused ? <Play className="size-3" /> : <Pause className="size-3" />}
+        </button>
+        <div className="flex gap-1.5 px-2">
+          {slides.slice(0, 6).map((slide, i) => (
+            <button
+              onPointerDown={(event) => event.stopPropagation()}
+              key={slide.key}
+              type="button"
+              onClick={() => goTo(i)}
+              aria-label={t("goToSlide", { number: i + 1 })}
+              className={cn(
+                "h-1 rounded-full transition-all",
+                i === index % 6
+                  ? "bg-accent w-8"
+                  : "bg-primary-foreground/30 w-2"
+              )}
+            />
+          ))}
+        </div>
+        <button
+          onPointerDown={(event) => event.stopPropagation()}
+          type="button"
+          onClick={() => goTo(index + 1)}
+          aria-label={t("next")}
+          className="hero-cylinder__control"
+        >
+          <ChevronRight className="size-4 rtl:rotate-180" />
+        </button>
+      </div>
+      <div className="hero-cylinder__floor" />
     </section>
   );
 }

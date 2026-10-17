@@ -2,7 +2,11 @@ import { z } from "zod";
 
 export const contactSchema = z.object({
   name: z.string().trim().min(1, "required"),
-  email: z.string().trim().min(1, "required").email("invalidEmail"),
+  phone: z
+    .string()
+    .trim()
+    .min(1, "required")
+    .regex(/^\+?[0-9\s\-]{7,15}$/, "invalidPhone"),
   message: z.string().trim().min(1, "required"),
 });
 

@@ -1,0 +1,11 @@
+# Project defaults tuned for concise, cost-aware coding turns.
+model_reasoning_effort = "low"
+model_reasoning_summary = "none"
+model_verbosity = "low"
+plan_mode_reasoning_effort = "low"
+personality = "pragmatic"
+history.persistence = "none"
+tool_output_token_limit = 3000
+
+[tools.web_search]
+context_size = "low"

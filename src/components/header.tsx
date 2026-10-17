@@ -208,11 +208,11 @@ export function Header() {
         )}
       >
         {/* ── Header bar ── */}
-        <div className="bg-background/10 border-border/10 opacity:0.2 mx-auto flex h-16 max-w-7xl items-center justify-between rounded-2xl border ps-12 pe-4 shadow-lg backdrop-blur-sm sm:ps-14 sm:pe-6 lg:pe-8">
+        <div className="bg-background/10 border-border/5 mx-auto flex h-16 max-w-7xl items-center justify-between rounded-2xl border ps-12 pe-4 shadow-lg backdrop-blur-xl sm:ps-14 sm:pe-6 lg:pe-8">
           {/* Brand */}
           <Link
             href="/"
-            className="text-foreground flex items-center gap-2 text-xl font-bold tracking-tight"
+            className="flex items-center gap-2 text-xl font-bold tracking-tight text-white"
           >
             <Image
               src="/images/logo/hivaLogo.png"
@@ -228,13 +228,13 @@ export function Header() {
           <nav className="hidden items-center gap-6 md:flex">
             <Link
               href="/"
-              className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+              className="text-sm font-medium text-white/90 transition-colors hover:text-white"
             >
               {t("home")}
             </Link>
             <Link
               href="/about"
-              className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+              className="text-sm font-medium text-white/90 transition-colors hover:text-white"
             >
               {t("about")}
             </Link>
@@ -250,7 +250,7 @@ export function Header() {
                   "flex items-center gap-1 text-sm font-medium transition-colors",
                   megaOpen
                     ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
+                    : "text-white/90 hover:text-white"
                 )}
                 aria-expanded={megaOpen}
                 aria-haspopup="true"
@@ -267,7 +267,7 @@ export function Header() {
 
             <Link
               href="/contact"
-              className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+              className="text-sm font-medium text-white/90 transition-colors hover:text-white"
             >
               {t("contact")}
             </Link>
@@ -286,7 +286,11 @@ export function Header() {
             )}
 
             <Link href="/basket" className="relative" aria-label={t("basket")}>
-              <Button variant="ghost" size="icon">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-white/90 hover:bg-white/10 hover:text-white"
+              >
                 <ShoppingCart className="h-5 w-5" />
               </Button>
               {cartCount > 0 && (
@@ -304,10 +308,10 @@ export function Header() {
               disabled={isPending}
             >
               <SelectTrigger
-                className="h-9 w-auto gap-1.5 sm:w-35"
+                className="h-9 w-auto gap-1.5 border-white/60 bg-white/5 text-white/90 hover:bg-white/10 hover:text-white sm:w-35"
                 aria-label="Select language"
               >
-                <Globe className="text-muted-foreground h-4 w-4 shrink-0" />
+                <Globe className="h-4 w-4 shrink-0 text-white/80" />
                 <SelectValue className="hidden! sm:flex!" />
               </SelectTrigger>
               <SelectContent align="end">
@@ -350,11 +354,11 @@ export function Header() {
               transition={{ duration: 0.15, ease: "easeOut" }}
               onMouseEnter={openMega}
               onMouseLeave={closeMega}
-              className="bg-background/10 border-border/10 mx-auto mt-2 hidden max-w-7xl overflow-hidden rounded-2xl border shadow-xl backdrop-blur-lg md:block"
+              className="bg-background/10 border-border/5 mx-auto mt-2 hidden max-w-7xl overflow-hidden rounded-2xl border shadow-xl backdrop-blur-xl md:block"
             >
               <div className="flex min-h-64">
                 {/* Level 1 — Category list */}
-                <div className="border-border/30 w-56 shrink-0 border-e py-2">
+                <div className="border-border/15 w-56 shrink-0 border-e py-2">
                   {MEGA_MENU.map((cat, idx) => (
                     <Link
                       key={cat.key}
@@ -365,7 +369,7 @@ export function Header() {
                         "flex w-full items-center gap-3 px-4 py-2.5 text-sm transition-colors",
                         hoveredCatIdx === idx
                           ? "bg-primary/8 text-primary border-primary border-e-2"
-                          : "text-muted-foreground hover:bg-accent hover:text-foreground"
+                          : "text-foreground/75 hover:bg-accent hover:text-foreground"
                       )}
                     >
                       <cat.icon className="size-4 shrink-0" />
@@ -403,7 +407,7 @@ export function Header() {
                         key={subKey}
                         href={`/products?category=${activeCat.key}&subcategory=${subKey}`}
                         onClick={() => setMegaOpen(false)}
-                        className="text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-md px-2 py-2 text-sm transition-colors"
+                        className="text-foreground/75 hover:text-primary hover:bg-primary/5 rounded-md px-2 py-2 text-sm transition-colors"
                       >
                         {getSubcatLabel(activeCat.key, subKey)}
                       </Link>
@@ -413,11 +417,11 @@ export function Header() {
               </div>
 
               {/* Footer — View all products */}
-              <div className="border-border/30 border-t px-5 py-2.5">
+              <div className="border-border/15 border-t px-5 py-2.5">
                 <Link
                   href="/products"
                   onClick={() => setMegaOpen(false)}
-                  className="text-muted-foreground hover:text-primary text-xs font-medium transition-colors"
+                  className="text-foreground/75 hover:text-primary text-xs font-medium transition-colors"
                 >
                   {t("shopByCategory")} — {t("viewAll")}
                 </Link>
@@ -436,7 +440,7 @@ export function Header() {
               transition={{ duration: 0.2, ease: "easeInOut" }}
               className="overflow-hidden md:hidden"
             >
-              <div className="bg-background/30 border-border/40 mx-auto mt-2 max-w-7xl rounded-2xl border shadow-lg backdrop-blur-lg">
+              <div className="bg-background/30 border-border/15 mx-auto mt-2 max-w-7xl rounded-2xl border shadow-lg backdrop-blur-xl">
                 <nav className="flex flex-col gap-1 px-4 py-3">
                   {/* Home & About */}
                   {(

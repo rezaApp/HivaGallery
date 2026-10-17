@@ -8,7 +8,7 @@ export type HeroSlide = {
 };
 
 const PUBLIC_DIR = join(process.cwd(), "public");
-const SLIDE_COUNT = 12;
+const SLIDE_COUNT = 10;
 const DESKTOP_IMAGE_COUNT = 6;
 
 /**

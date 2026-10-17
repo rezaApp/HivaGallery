@@ -42,6 +42,7 @@ export function ThemeToggle() {
     <Button
       variant="ghost"
       size="icon"
+      className="text-white/90 hover:bg-white/10 hover:text-white"
       onClick={handleClick}
       aria-label={LABELS[active]}
       disabled={!mounted}
