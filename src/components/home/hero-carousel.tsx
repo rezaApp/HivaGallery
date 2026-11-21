@@ -95,13 +95,13 @@ export function HeroCarousel({ slides }: { slides: readonly HeroSlide[] }) {
         })}
       </div>
       <div className="hero-cylinder__content pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center px-8 text-center">
-        <span className="text-primary-foreground/70 mb-5 text-[10px] font-semibold tracking-[0.42em] uppercase">
+        <span className="mb-5 text-[10px] font-semibold tracking-[0.42em] text-[oklch(96%_0.02_78/0.75)] uppercase">
           HIVA / {String(index + 1).padStart(2, "0")}
         </span>
-        <h1 className="text-primary-foreground max-w-2xl text-3xl font-semibold tracking-tight drop-shadow-2xl sm:text-5xl md:text-6xl">
+        <h1 className="max-w-2xl text-3xl font-semibold tracking-tight text-[oklch(97%_0.015_78)] drop-shadow-2xl sm:text-5xl md:text-6xl">
           {t(`${active.key}Title`)}
         </h1>
-        <p className="text-primary-foreground/75 mt-4 max-w-lg text-sm leading-7 sm:text-base">
+        <p className="mt-4 max-w-lg text-sm leading-7 text-[oklch(96%_0.02_78/0.85)] sm:text-base">
           {t(`${active.key}Subtitle`)}
         </p>
       </div>
@@ -136,7 +136,7 @@ export function HeroCarousel({ slides }: { slides: readonly HeroSlide[] }) {
                 "h-1 rounded-full transition-all",
                 i === index % 6
                   ? "bg-accent w-8"
-                  : "bg-primary-foreground/30 w-2"
+                  : "w-2 bg-[oklch(96%_0.02_78/0.35)]"
               )}
             />
           ))}

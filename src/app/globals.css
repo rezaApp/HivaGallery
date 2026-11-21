@@ -359,7 +359,7 @@
     height: 34px;
     border: 1px solid oklch(90% 0.03 78 / 0.22);
     border-radius: 999px;
-    color: var(--primary-foreground);
+    color: oklch(97% 0.015 78);
     background: oklch(30% 0.03 70 / 0.4);
     backdrop-filter: blur(12px);
     transition:
