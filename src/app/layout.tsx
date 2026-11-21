@@ -144,6 +144,10 @@ export default async function RootLayout({
             opacity: 0.8,
           }}
         />
+        <div
+          aria-hidden
+          className="fixed inset-0 -z-1 bg-[oklch(98%_0.008_80/0.55)] dark:hidden"
+        />
         {children}
       </body>
     </html>
