@@ -13,6 +13,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { Link } from "@/i18n/navigation";
+import { Fireflies } from "@/components/home/fireflies";
 
 type Locale = "fa" | "en" | "ar";
 type Product = { image: string; name: string; price: string; tag?: string };
@@ -561,8 +562,9 @@ export function FaqAndFooter({ locale }: { locale: string }) {
           ))}
         </div>
       </section>
-      <footer className="bg-foreground text-background">
-        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 md:grid-cols-[1.5fr_1fr_1fr]">
+      <footer className="bg-secondary text-foreground border-border dark:bg-background relative overflow-hidden border-t">
+        <Fireflies />
+        <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-14 md:grid-cols-[1.5fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-2 text-xl font-bold">
               <Gem className="size-5" /> HIVA
@@ -574,21 +576,21 @@ export function FaqAndFooter({ locale }: { locale: string }) {
               <a
                 href="#"
                 aria-label="Instagram"
-                className="border-background/25 hover:bg-background/10 flex size-9 items-center justify-center rounded-full border"
+                className="border-foreground/25 hover:bg-foreground/10 flex size-9 items-center justify-center rounded-full border"
               >
                 <Camera className="size-4" />
               </a>
               <a
                 href="#"
                 aria-label="Email"
-                className="border-background/25 hover:bg-background/10 flex size-9 items-center justify-center rounded-full border"
+                className="border-foreground/25 hover:bg-foreground/10 flex size-9 items-center justify-center rounded-full border"
               >
                 <Mail className="size-4" />
               </a>
               <a
                 href="#"
                 aria-label="Message"
-                className="border-background/25 hover:bg-background/10 flex size-9 items-center justify-center rounded-full border"
+                className="border-foreground/25 hover:bg-foreground/10 flex size-9 items-center justify-center rounded-full border"
               >
                 <MessageCircle className="size-4" />
               </a>
@@ -611,7 +613,7 @@ export function FaqAndFooter({ locale }: { locale: string }) {
             </nav>
           </div>
         </div>
-        <div className="border-background/15 border-t px-6 py-5 text-center text-xs opacity-60">
+        <div className="border-foreground/15 relative border-t px-6 py-5 text-center text-xs opacity-60">
           © {new Date().getFullYear()} HIVA — {copy.rights}
         </div>
       </footer>
