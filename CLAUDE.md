@@ -4,6 +4,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 @AGENTS.md
 
+## Commands
+
+`npm run dev` · `npm run lint` · `npm run format:check` · `npm run build` (also type-checks). There is no test framework, so no single-test command; verify manually in `/fa` (default, no prefix), `/en`, and `/ar`. Check a single file with `npx eslint path/to/file.tsx` and `npx prettier --check path/to/file.tsx`. Husky runs `lint-staged` on commit.
+
 ## Architecture notes (supplementing AGENTS.md)
 
 **Next.js 16 breaking change — `proxy.ts`, not `middleware.ts`.** Locale routing lives in `src/proxy.ts` (not `middleware.ts` — that file no longer exists in this version; Middleware was renamed to Proxy in Next.js 16, same behavior). It wraps `next-intl`'s `createMiddleware(routing)`. Before relying on any Next.js API, check `node_modules/next/dist/docs/` for this version's conventions rather than assuming prior Next.js knowledge, per `AGENTS.md`.
